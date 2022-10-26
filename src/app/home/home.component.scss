@@ -1,0 +1,26 @@
+.flex-row-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5px;
+}
+.flex-row-container > .flex-row-item {
+  flex: 1 1 20%; /*grow | shrink | basis */
+}
+
+.flex-row-item {
+  background-color: #edecee;
+  border: 1px solid#edecee;
+  border-radius: 10px;
+  width: 30%;
+  margin: 20px;
+}
+@media screen and (max-width: 481px) {
+  .flex-row-container > .flex-row-item {
+    flex: 100%;
+  }
+}
+.searchbar {
+  display: flex;
+  justify-content: center;
+}
