@@ -83,3 +83,16 @@ margin: 10px;
     background-color: red;
 }
 
+.container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 10px;
+  height: 10px;
+
+}
+
+.number-display {
+  font-size: 1em;
+}
+

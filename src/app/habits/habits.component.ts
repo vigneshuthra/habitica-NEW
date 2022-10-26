@@ -23,12 +23,17 @@ export class HabitsComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  counter=0;
+
   addTask() {
     const value = this.newTodoForm.value.todoItem;
     this.habitList.push({ id: this.habitList.length, name: value });
     window.localStorage.setItem('task', JSON.stringify(this.habitList));
+    this.counter++;
+    console.log(this.counter);
     this.newTodoForm.reset();
   }
+
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.habitList, event.previousIndex, event.currentIndex);
   }
@@ -36,6 +41,9 @@ export class HabitsComponent implements OnInit {
   removeTask(i: any) {
     this.habitList.splice(i, 1);
     window.localStorage.setItem('task', JSON.stringify(this.habitList));
+    this.counter--;
+    console.log(this.counter);
+
   }
 
   OnChange($event: any) {

@@ -23,11 +23,13 @@ export class DailyComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  counter =0;
 
   addTask() {
     const value = this.newTodoForm.value.todoItem;
     this.taskList.push({ id: this.taskList.length, name: value });
     window.localStorage.setItem('task', JSON.stringify(this.taskList));
+    this.counter ++;
     this.newTodoForm.reset();
   }
   markDone(value: any) {}
@@ -35,6 +37,8 @@ export class DailyComponent implements OnInit {
   removeTask(i: any) {
     this.taskList.splice(i, 1);
     window.localStorage.setItem('task', JSON.stringify(this.taskList));
+    this.counter --;
+
   }
 
   public getJSON(): Observable<any> {
