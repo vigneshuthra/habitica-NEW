@@ -88,4 +88,18 @@
     justify-content: left;
   }
 
- 
+ .titleBadge{
+  display: flex;
+ }
+
+ .container {
+  
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+
+}
+
+.number-display {
+  font-size: 1em;
+}
