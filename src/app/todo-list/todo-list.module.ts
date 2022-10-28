@@ -9,7 +9,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatInputModule } from '@angular/material/input';
 import { TodoListComponent } from './todo-list.component';
-
+import { TodoService } from './todo-list.service';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -23,9 +24,11 @@ import { TodoListComponent } from './todo-list.component';
     MatMenuModule,
     MatIconModule,
     DragDropModule,
-    MatInputModule
+    MatInputModule,
+    MatBadgeModule
   ],
   declarations: [TodoListComponent],
+  providers:[TodoService],
 exports:[TodoListComponent]
 })
 export class TodoListModule { }

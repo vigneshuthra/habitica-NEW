@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { DailyService } from './daily.service';
+import { DailyTask } from './models';
+
 @Component({
   selector: 'app-daily',
   templateUrl: './daily.component.html',
@@ -10,15 +13,18 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export class DailyComponent implements OnInit {
 
-  taskList: any[] = [];
-  private _jsonURL = 'assets/daily.json';
+  @ViewChild('textInput')
+  titleInputReference!: ElementRef;
+
+
+  dailyList: DailyTask[] = [];
 
   newTodoForm = this.formBuilder.group({
     todoItem: '',
   });
   addValue: any;
   IsChecked: boolean;
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private dailyService:DailyService) {
     this.IsChecked = false;
   }
 
@@ -26,38 +32,27 @@ export class DailyComponent implements OnInit {
   counter =0;
 
   addTask() {
-    const value = this.newTodoForm.value.todoItem;
-    this.taskList.push({ id: this.taskList.length, name: value });
-    window.localStorage.setItem('task', JSON.stringify(this.taskList));
+    this.dailyService.createTask(this.titleInputReference.nativeElement.value);
+    this.dailyList= this.dailyService.getDailyTask();
     this.counter ++;
     this.newTodoForm.reset();
   }
   markDone(value: any) {}
 
   removeTask(i: any) {
-    this.taskList.splice(i, 1);
-    window.localStorage.setItem('task', JSON.stringify(this.taskList));
+    this.dailyList.splice(i, 1);
+    window.localStorage.setItem('task', JSON.stringify(this.dailyList));
     this.counter --;
 
   }
 
-  public getJSON(): Observable<any> {
-    return this.http.get(this._jsonURL);
-  }
-
-  getdata() {
-    this.getJSON().subscribe((data) => {
-      this.addValue = data;
-      console.log(this.addValue);
-    });
-  }
-
+  
   removeData(i: any) {
     this.addValue.splice(i, 1);
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.taskList, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.dailyList, event.previousIndex, event.currentIndex);
   }
 
   OnChange($event: any) {
@@ -68,8 +63,8 @@ export class DailyComponent implements OnInit {
   }
 
   getData() {
-    window.localStorage.getItem(this.taskList.toString());
+    window.localStorage.getItem(this.dailyList.toString());
 
-    console.log(this.taskList);
+    console.log(this.dailyList);
   }
 }

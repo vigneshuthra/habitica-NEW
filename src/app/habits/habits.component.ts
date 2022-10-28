@@ -1,7 +1,8 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-
+import { HabitService } from './habits.service';
+import { HabitTask } from './habitmodels';
 
 
 @Component({
@@ -10,12 +11,16 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./habits.component.scss'],
 })
 export class HabitsComponent implements OnInit {
-  habitList: any[] = [];
+  @ViewChild('textInput')
+  titleInputReference!: ElementRef;
+
+
+  habitList: HabitTask[] = [];
   newTodoForm = this.formBuilder.group({
     todoItem: '',
   });
   IsChecked: boolean;
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private habitService : HabitService) {
     this.IsChecked = false;
 
   }
@@ -26,9 +31,8 @@ export class HabitsComponent implements OnInit {
   counter=0;
 
   addTask() {
-    const value = this.newTodoForm.value.todoItem;
-    this.habitList.push({ id: this.habitList.length, name: value });
-    window.localStorage.setItem('task', JSON.stringify(this.habitList));
+    this.habitService.createTask(this.titleInputReference.nativeElement.value);
+    this.habitList= this.habitService.getHabitTask();
     this.counter++;
     console.log(this.counter);
     this.newTodoForm.reset();

@@ -1,9 +1,8 @@
 <mat-card>
     <div class="titleBadge">
         <h1>Habits</h1>
-        <div class="container">
-            <div class="number-display">
-              {{counter}}
+        <div class="badgecontainer">
+            <div [matBadge]="counter" matBadgeHidden="false" matBadgeColor="primary" class="number-display">
             </div>
           </div>
     </div>
@@ -17,6 +16,7 @@
             formControlName="todoItem"
             autocomplete="off"
             (keyup.enter)="addTask()"
+            #textInput
         /></mat-form-field>
       </form>
     </div>
@@ -29,8 +29,8 @@
       >
       <mat-checkbox (change)="OnChange($event)" [checked]="IsChecked"></mat-checkbox>
   
-        <div class="displayvalue" [ngClass]="{ 'line-through': data.completed }">
-          {{ data.name | uppercase }}
+        <div class="displayvalue" [ngClass]="{ 'line-through': data.Task }">
+          {{ data.Task | uppercase }}
         </div>
         <div>
           <button

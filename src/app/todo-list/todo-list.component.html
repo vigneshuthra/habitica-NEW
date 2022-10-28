@@ -2,9 +2,8 @@
   <div class="titleBadge">
     <h1>Todo List</h1>
     
-    <div class="container">
-      <div class="number-display">
-        {{counter}}
+    <div class="badgecontainer">
+      <div [matBadge]="counter" class="number-display" matBadgeColor="primary" matBadgeHidden="false">
       </div>
     </div>
   </div>
@@ -18,18 +17,19 @@
             formControlName="todoItem"
             (keyup.enter)="addTask()"
             autocomplete="off"
+            #textInput
         /></mat-form-field>
       </form>
     </div>
     <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
   
-      <div class="listContainer" *ngFor="let value of taskList; index as i" cdkDrag>
+      <div class="listContainer" *ngFor="let value of TodoList; index as i" cdkDrag>
         
         <mat-checkbox (change)="OnChange($event)" [checked]="IsChecked"></mat-checkbox>
   
   
-        <div class="displayvalue" [ngClass]="{ 'line-through': value.completed }">
-          {{ value.name }}
+        <div class="displayvalue" [ngClass]="{ 'line-through': value.Task }">
+          {{ value.Task | uppercase}}
         </div>
   
         <div>

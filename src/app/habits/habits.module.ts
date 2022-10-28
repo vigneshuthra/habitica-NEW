@@ -10,6 +10,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatInputModule } from '@angular/material/input';
 import { HabitsComponent } from './habits.component';
 import {MatButtonModule} from '@angular/material/button';
+import { HabitService } from './habits.service';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   imports: [
@@ -23,10 +25,12 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     DragDropModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatBadgeModule
 
   ],
   declarations: [HabitsComponent],
+  providers:[HabitService],
   exports: [HabitsComponent],
 })
 export class HabitsModule {}
