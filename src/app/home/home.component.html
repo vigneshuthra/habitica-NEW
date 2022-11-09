@@ -1,16 +1,18 @@
 <app-profile-banner></app-profile-banner>
 
-<div class="searchbar">
-  <app-searchbar (onInputChange)="onSearch($event)"></app-searchbar>
-</div>
-<div class="flex-row-container">
-  <div class="flex-row-item">
-    <app-daily></app-daily>
+<div class="bodyMain">
+  <div class="searchbar">
+    <app-searchbar (onInputChange)="onSearch($event)"></app-searchbar>
   </div>
-  <div class="flex-row-item">
-    <app-todo-list></app-todo-list>
-  </div>
-  <div class="flex-row-item">
-    <app-habits></app-habits>
+  <div class="flex-row-container">
+    <div class="flex-row-item">
+      <app-daily></app-daily>
+    </div>
+    <div class="flex-row-item">
+      <app-todo-list></app-todo-list>
+    </div>
+    <div class="flex-row-item">
+      <app-habits></app-habits>
+    </div>
   </div>
 </div>
