@@ -1,0 +1,35 @@
+<div>
+  <form [formGroup]="newTodoForm" class="flex mt-4">
+    <mat-form-field appearance="fill"
+      ><input
+        matInput
+        placeholder="Add daily"
+        formControlName="todoItem"
+        (keyup.enter)="addTask()"
+        autocomplete="off"
+        #textInput
+    /></mat-form-field>
+  </form>
+</div>
+
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div *ngIf="type == 'DAILY'">
+    <app-item
+      [value]="value"
+      *ngFor="let value of dailyList; index as i"
+      cdkDrag
+      (inputDataChange)="removeTask(i)"
+    >
+    </app-item>
+  </div>
+
+  <div *ngIf="type == 'TODO'">
+    <app-item
+      [value]="value"
+      *ngFor="let value of TodoList; index as i"
+      cdkDrag
+      (inputDataChange)="removeTask(i)"
+    >
+    </app-item>
+  </div>
+</div>

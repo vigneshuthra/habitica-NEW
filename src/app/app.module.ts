@@ -20,6 +20,8 @@ import { MatInputModule } from '@angular/material/input';
 import { DailyComponent } from './daily/daily.component';
 import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ItemComponent } from './item/item.component';
+import { ItemListComponent } from './item-list/item-list.component';
 
 @NgModule({
   declarations: [

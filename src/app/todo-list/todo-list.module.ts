@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { TodoListComponent } from './todo-list.component';
 import { TodoService } from './todo-list.service';
 import {MatBadgeModule} from '@angular/material/badge';
+import { ItemListModule } from '../item-list/item-list.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatIconModule,
     DragDropModule,
     MatInputModule,
-    MatBadgeModule
+    MatBadgeModule,
+    ItemListModule
   ],
   declarations: [TodoListComponent],
   providers:[TodoService],

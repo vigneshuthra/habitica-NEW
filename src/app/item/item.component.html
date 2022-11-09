@@ -1,0 +1,26 @@
+<div class="listContainer">
+  <div>
+    <mat-checkbox
+      (change)="OnChange($event)"
+      [checked]="IsChecked"
+    ></mat-checkbox>
+  </div>
+
+    <div class="displayvalue" [ngClass]="{ 'line-through': value.Task }">
+      {{ value.Task | uppercase }}
+    </div>
+
+  <div>
+    <Matbutton mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </Matbutton>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon class="deleteitem" (click)="removeTask(value)"
+          >delete</mat-icon
+        >
+        <span>remove</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>

@@ -14,7 +14,7 @@ getDailyTask(){
 createTask(newTask: string){
 
     if(newTask.length!=0){
-        const dailyobj= {Task:newTask};
+        const dailyobj= {Task:newTask, Type:'DAILY'};
         this.ListDaily.push(dailyobj);
     }
 }

@@ -14,44 +14,8 @@ import { TodoTask } from './todomodels';
 })
 
 export class TodoListComponent implements OnInit {
-  @ViewChild('textInput')
-  titleInputReference!: ElementRef;
-
-
-  TodoList: TodoTask[] = [];
-  newTodoForm = this.formBuilder.group({
-    todoItem: '',
-  });
-  IsChecked: boolean;
-  constructor(private formBuilder: FormBuilder, private todoService: TodoService) {
-    this.IsChecked = false;
-  }
+  
 
   ngOnInit(): void {}
-  counter = 0;
-
-  addTask() {
-    this.todoService.createTask(this.titleInputReference.nativeElement.value);
-    this.TodoList= this.todoService.getTodoTask();
-    this.counter++;
-    this.newTodoForm.reset();
-  }
-  markDone(value: any) {}
-
-  removeTask(i: any) {
-    this.TodoList.splice(i, 1);
-    window.localStorage.setItem('task', JSON.stringify(this.TodoList));
-    this.counter--;
-  }
-
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.TodoList, event.previousIndex, event.currentIndex);
-  }
-  
-  OnChange($event: any) {
-    if ($event.checked) console.log('the task is added');
-    else console.log('the task is removed');
-
-    //MatCheckboxChange {checked,MatCheckbox}
-  }
+ 
 }

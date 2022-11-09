@@ -1,53 +1,8 @@
 <mat-card>
   <div class="titleBadge">
-    <h1>Todo List</h1>
-    
-    <div class="badgecontainer">
-      <div [matBadge]="counter" class="number-display" matBadgeColor="primary" matBadgeHidden="false">
-      </div>
-    </div>
+    <h1>To-do</h1>
+    <div class="badgecontainer"></div>
   </div>
 
-    <div>
-      <form [formGroup]="newTodoForm" class="flex mt-4">
-        <mat-form-field appearance="fill"
-          ><input
-            matInput
-            placeholder="Add task"
-            formControlName="todoItem"
-            (keyup.enter)="addTask()"
-            autocomplete="off"
-            #textInput
-        /></mat-form-field>
-      </form>
-    </div>
-    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  
-      <div class="listContainer" *ngFor="let value of TodoList; index as i" cdkDrag>
-        
-        <mat-checkbox (change)="OnChange($event)" [checked]="IsChecked"></mat-checkbox>
-  
-  
-        <div class="displayvalue" [ngClass]="{ 'line-through': value.Task }">
-          {{ value.Task | uppercase}}
-        </div>
-  
-        <div>
-          <div>
-            <Matbutton mat-icon-button [matMenuTriggerFor]="menu" >
-              <mat-icon>more_vert</mat-icon>
-            </Matbutton>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="removeTask(i)">
-                <mat-icon class="deleteitem" >delete</mat-icon>
-                <span>remove</span>
-              </button>
-             
-             
-            </mat-menu>
-          </div>
-        </div>
-      </div>
-      <div></div></div
-  ></mat-card>
-  
+  <app-item-list [type]="'TODO'"></app-item-list>
+</mat-card>

@@ -13,7 +13,7 @@ export class TodoService{
     createTask(newTask: string){
     
         if(newTask.length!=0){
-            const todoobj= {Task:newTask};
+            const todoobj= {Task:newTask, Type:'TODO'};
             this.TodoList.push(todoobj);
         }
     }
