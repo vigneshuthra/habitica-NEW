@@ -15,15 +15,13 @@ export class ItemComponent implements OnInit {
   IsChecked: boolean;
   @Output() inputDataChange: EventEmitter<any> = new EventEmitter();
 
-
   @Input() dailyList: any;
 
   constructor() {
     this.IsChecked = false;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this['allList'], event.previousIndex, event.currentIndex);
@@ -32,13 +30,9 @@ export class ItemComponent implements OnInit {
   OnChange($event: any) {
     if ($event.checked) console.log('the task is added');
     else console.log('the task is removed');
-
   }
 
-
-removeTask(i: any){
-  this.inputDataChange.emit(true); 
-
-}
-  
+  removeTask(i: any) {
+    this.inputDataChange.emit(true);
+  }
 }

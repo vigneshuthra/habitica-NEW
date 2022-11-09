@@ -6,16 +6,11 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { TodoService } from './todo-list.service';
 import { TodoTask } from './todomodels';
 
-
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
+  styleUrls: ['./todo-list.component.scss'],
 })
-
 export class TodoListComponent implements OnInit {
-  
-
   ngOnInit(): void {}
- 
 }

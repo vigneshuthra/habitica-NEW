@@ -9,12 +9,8 @@ import { DailyTask } from './models';
 @Component({
   selector: 'app-daily',
   templateUrl: './daily.component.html',
-  styleUrls: ['./daily.component.scss']
+  styleUrls: ['./daily.component.scss'],
 })
 export class DailyComponent implements OnInit {
-
- 
-
   ngOnInit(): void {}
- 
 }

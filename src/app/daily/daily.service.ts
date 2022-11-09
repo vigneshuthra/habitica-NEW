@@ -1,22 +1,18 @@
-import { Injectable } from "@angular/core";
-import { DailyTask } from "./models";
+import { Injectable } from '@angular/core';
+import { DailyTask } from './models';
 
 @Injectable({ providedIn: 'root' })
+export class DailyService {
+  private ListDaily: DailyTask[] = [];
 
-export class DailyService{
-    private ListDaily: DailyTask[]=[];
-
-
-getDailyTask(){
+  getDailyTask() {
     return this.ListDaily;
-}
+  }
 
-createTask(newTask: string){
-
-    if(newTask.length!=0){
-        const dailyobj= {Task:newTask, Type:'DAILY'};
-        this.ListDaily.push(dailyobj);
+  createTask(newTask: string) {
+    if (newTask.length != 0) {
+      const dailyobj = { Task: newTask, Type: 'DAILY' };
+      this.ListDaily.push(dailyobj);
     }
-}
-
+  }
 }

@@ -93,7 +93,6 @@ export class ItemListComponent implements OnInit {
 
   removeTask(i: any) {
     if (this.type == 'DAILY') this.dailyList.splice(i, 1);
-
     if (this.type == 'TODO') this.TodoList.splice(i, 1);
     if (this.type == 'HABIT') this.habitList.splice(i, 1);
   }
@@ -129,11 +128,11 @@ export class ItemListComponent implements OnInit {
       this.filteredDailyList = this.dailyList.filter((dailyItem) =>
         dailyItem.Task.toLowerCase().includes(value.toLowerCase())
       );
-    else if( this.type == 'TODO')
-    this.filteredTodoList = this.TodoList.filter((todoItem) =>
-      todoItem.Task.toLowerCase().includes(value.toLowerCase())
-    );
-    else( this.type=='HABIT')
+    else if (this.type == 'TODO')
+      this.filteredTodoList = this.TodoList.filter((todoItem) =>
+        todoItem.Task.toLowerCase().includes(value.toLowerCase())
+      );
+    else this.type == 'HABIT';
     this.filteredHabitList = this.habitList.filter((HabitItem) =>
       HabitItem.Task.toLowerCase().includes(value.toLowerCase())
     );
