@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { HomeService } from './home.service';
+
+interface DataStructure {
+  id: string;
+  name: string;
+  description: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -7,9 +15,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public dataSource$ = new BehaviorSubject<DataStructure[]>([]);
 
-  ngOnInit(): void {
+  constructor(private _homeService: HomeService) {}
+
+  ngOnInit(): void {}
+
+  onSearch(value: string | null) {
+    this._homeService.searchData$.next(value);
   }
-
 }

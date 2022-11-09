@@ -16,7 +16,7 @@
   <div *ngIf="type == 'DAILY'">
     <app-item
       [value]="value"
-      *ngFor="let value of dailyList; index as i"
+      *ngFor="let value of filteredDailyList; index as i"
       cdkDrag
       (inputDataChange)="removeTask(i)"
     >
@@ -26,7 +26,7 @@
   <div *ngIf="type == 'TODO'">
     <app-item
       [value]="value"
-      *ngFor="let value of TodoList; index as i"
+      *ngFor="let value of filteredTodoList; index as i"
       cdkDrag
       (inputDataChange)="removeTask(i)"
     >

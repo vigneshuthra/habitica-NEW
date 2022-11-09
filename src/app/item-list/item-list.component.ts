@@ -2,8 +2,10 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 import { DailyService } from '../daily/daily.service';
 import { DailyTask } from '../daily/models';
+import { HomeService } from '../home/home.service';
 import { TodoService } from '../todo-list/todo-list.service';
 import { TodoTask } from '../todo-list/todomodels';
 import { ItemType } from './item.data';
@@ -21,6 +23,8 @@ export class ItemListComponent implements OnInit {
 
   dailyList: DailyTask[] = [];
   filteredDailyList: DailyTask[] = [];
+  filteredTodoList: TodoTask[] = [];
+
   TodoList: TodoTask[] = [];
 
   newTodoForm = this.formBuilder.group({
@@ -29,15 +33,24 @@ export class ItemListComponent implements OnInit {
 
   addValue: any;
   IsChecked: boolean;
+  private _unsubscribe$ = new Subject<void>();
+
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private dailyService: DailyService,
-    private todoService: TodoService
+    private todoService: TodoService,
+    private _homeService: HomeService
   ) {
     this.IsChecked = false;
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._homeService.searchData$
+      .pipe(takeUntil(this._unsubscribe$))
+      .subscribe((searchValue) => {
+        this.filterData(searchValue);
+      });
+  }
   counter = 0;
 
   addTask() {
@@ -53,6 +66,8 @@ export class ItemListComponent implements OnInit {
     } else if (this.type == 'TODO') {
       this.todoService.createTask(this.titleInputReference.nativeElement.value);
       this.TodoList = this.todoService.getTodoTask();
+      this.filteredTodoList = this.todoService.getTodoTask();
+
       console.log(this.type, this.TodoList);
 
       this.newTodoForm.reset();
@@ -82,5 +97,21 @@ export class ItemListComponent implements OnInit {
     else console.log('the task is removed');
 
     //MatCheckboxChange {checked,MatCheckbox}
+  }
+
+  private filterData(value: string | null): void {
+    if (!value) {
+      this.filteredDailyList = this.dailyList;
+      this.filteredTodoList = this.TodoList;
+      return;
+    }
+    if (this.type == 'DAILY')
+      this.filteredDailyList = this.dailyList.filter((dailyItem) =>
+        dailyItem.Task.toLowerCase().includes(value.toLowerCase())
+      );
+    else this.type == 'TODO';
+    this.filteredTodoList = this.TodoList.filter((todoItem) =>
+      todoItem.Task.toLowerCase().includes(value.toLowerCase())
+    );
   }
 }
