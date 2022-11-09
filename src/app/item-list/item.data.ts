@@ -1,1 +1,1 @@
-export declare type ItemType = 'TODO' | 'DAILY' | 'HABBIT'
+export declare type ItemType = 'TODO' | 'DAILY' | 'HABIT'

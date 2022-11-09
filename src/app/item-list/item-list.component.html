@@ -32,4 +32,15 @@
     >
     </app-item>
   </div>
+  <div *ngIf="type == 'HABIT'">
+    <app-item
+      [value]="value"
+      *ngFor="let value of filteredHabitList; index as i"
+      cdkDrag
+      (inputDataChange)="removeTask(i)"
+    >
+    </app-item>
+  </div>
+
+
 </div>

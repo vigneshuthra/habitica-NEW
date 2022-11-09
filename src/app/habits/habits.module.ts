@@ -12,6 +12,7 @@ import { HabitsComponent } from './habits.component';
 import {MatButtonModule} from '@angular/material/button';
 import { HabitService } from './habits.service';
 import {MatBadgeModule} from '@angular/material/badge';
+import { ItemListModule } from '../item-list/item-list.module';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     DragDropModule,
     MatInputModule,
     MatButtonModule,
-    MatBadgeModule
+    MatBadgeModule,
+    ItemListModule
 
   ],
   declarations: [HabitsComponent],

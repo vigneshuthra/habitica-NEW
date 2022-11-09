@@ -78,12 +78,13 @@
   }
   
   ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-    background-color: green;
+    background-color: green !important;
   }
   
   .deleteitem{
     color: red;
   }
+
   #matMenu{
     justify-content: left;
   }
@@ -102,4 +103,17 @@
 
 .number-display {
   font-size: 1em;
+}
+
+// Background border
+.mat-checkbox .mat-checkbox-frame {
+  border-color: black !important;
+  background-color: #dddddd !important
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  margin-top: 1px;
+  margin-left: 1px;
+  width: 18px;
+  height: 18px;
 }

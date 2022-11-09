@@ -11,10 +11,10 @@ export class HabitService {
         return this.ListHabit;
     }
     
-    createTask(newTask: string){
+    createTask(newTask: string, newType: string){
     
         if(newTask.length!=0){
-            const habitobj= {Task:newTask};
+            const habitobj= {Task:newTask, Type:newType};
             this.ListHabit.push(habitobj);
         }
     }

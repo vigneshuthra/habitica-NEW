@@ -2,47 +2,11 @@
     <div class="titleBadge">
         <h1>Habits</h1>
         <div class="badgecontainer">
-            <div [matBadge]="counter" matBadgeHidden="false" matBadgeColor="primary" class="number-display">
-            </div>
-          </div>
+        </div>
     </div>
       
-    <div>
-      <form [formGroup]="newTodoForm" class="flex mt-4">
-        <mat-form-field appearance="fill"
-          ><input
-            matInput
-            placeholder="Add habit"
-            formControlName="todoItem"
-            autocomplete="off"
-            (keyup.enter)="addTask()"
-            #textInput
-        /></mat-form-field>
-      </form>
-    </div>
-  
-    <div cdkDropList class="habit-list" (cdkDropListDropped)="drop($event)">
-      <div
-        class="listContainer"
-        *ngFor="let data of habitList; index as i"
-        cdkDrag
-      >
-      <mat-checkbox (change)="OnChange($event)" [checked]="IsChecked"></mat-checkbox>
-  
-        <div class="displayvalue" [ngClass]="{ 'line-through': data.Task }">
-          {{ data.Task | uppercase }}
-        </div>
-        <div>
-          <button
-          mat-mini-fab
-          color="white"
-          class="removeDone"
-          (click)="removeTask(i)"
-        >
-          -
-        </button>
-        </div>
-      </div>
-    </div></mat-card
+    <app-item-list [type]="'HABIT'"></app-item-list>
+
+    </mat-card
   >
   
