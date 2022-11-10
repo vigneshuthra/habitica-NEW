@@ -1,3 +1,4 @@
 export type HabitTask = {
-        Task: string;
+        task: string;
+        type: string;
       };

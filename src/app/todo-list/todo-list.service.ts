@@ -1,21 +1,31 @@
 import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
+import { DailyTask } from "../daily/models";
 import { TodoTask } from "./todomodels";
 
 @Injectable({ providedIn: 'root' })
 
 export class TodoService{
-    private TodoList: TodoTask[]=[];
+    private _todos$ = new BehaviorSubject<DailyTask[]>([]); 
 
-    getTodoTask(){
-        return this.TodoList;
-    }
+    public getTodos(): TodoTask[] {
+        return this._todos$.getValue();
+      }
     
-    createTask(newTask: string){
+      public setTodos(data: TodoTask[]): void {
+        this._todos$.next(data);
+      }
     
-        if(newTask.length!=0){
-            const todoobj= {task:newTask, type:'TODO'};
-            this.TodoList.push(todoobj);
-        }
-    }
+      public getTodosObservable(): Observable<TodoTask[]> {
+        return this._todos$.asObservable();
+      }
+    
+      public createTask(newTask: string): void{
+    
+        console.log( "check");
+    
+          const todoTask: TodoTask = { task: newTask, type: 'TODO' };
+          this.setTodos([todoTask, ...this.getTodos()])
+      }
 
 }

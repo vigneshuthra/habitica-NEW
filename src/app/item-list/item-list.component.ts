@@ -41,7 +41,7 @@ export class ItemListComponent implements OnInit {
         )
       );
     }
-    console.log(this.initialData$);
+   // console.log(this.initialData$);
     
   }
   counter = 0;

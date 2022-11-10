@@ -1,18 +1,30 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HabitTask } from './habitmodels';
 
 @Injectable({ providedIn: 'root' })
 export class HabitService {
-  private ListHabit: HabitTask[] = [];
 
-  getHabitTask() {
-    return this.ListHabit;
+  private _habits$ = new BehaviorSubject<HabitTask[]>([]); 
+
+  public getHabits(): HabitTask[] {
+    return this._habits$.getValue();
   }
 
-  createTask(newTask: string, newType: string) {
-    if (newTask.length != 0) {
-      const habitobj = { Task: newTask, Type: newType };
-      this.ListHabit.push(habitobj);
-    }
+  public setHabits(data: HabitTask[]): void {
+    this._habits$.next(data);
   }
+
+  public getHabitsObservable(): Observable<HabitTask[]> {
+    return this._habits$.asObservable();
+  }
+
+  public createTask(newTask: string): void{
+
+    console.log( "check");
+
+      const habitTask: HabitTask = { task: newTask, type: 'DAILY' };
+      this.setHabits([habitTask, ...this.getHabits()])
+  }
+ 
 }
