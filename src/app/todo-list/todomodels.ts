@@ -1,4 +1,4 @@
 export type TodoTask = {
-        Task: string;
-        Type: string;
+        task: string;
+        type: string;
       };

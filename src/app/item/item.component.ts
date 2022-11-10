@@ -13,6 +13,7 @@ export class ItemComponent implements OnInit {
   @Input()
   value: any;
   IsChecked: boolean;
+
   @Output() inputDataChange: EventEmitter<any> = new EventEmitter();
 
   @Input() dailyList: any;
@@ -21,18 +22,10 @@ export class ItemComponent implements OnInit {
     this.IsChecked = false;
   }
 
-  ngOnInit(): void {}
-
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this['allList'], event.previousIndex, event.currentIndex);
+  ngOnInit(): void {
+    console.log(this.value, "check");
+    
   }
 
-  OnChange($event: any) {
-    if ($event.checked) console.log('the task is added');
-    else console.log('the task is removed');
-  }
 
-  removeTask(i: any) {
-    this.inputDataChange.emit(true);
-  }
 }

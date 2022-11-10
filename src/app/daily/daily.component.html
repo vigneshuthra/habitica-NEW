@@ -4,5 +4,5 @@
     <div class="badgecontainer"></div>
   </div>
 
-  <app-item-list [type]="'DAILY'"></app-item-list>
+  <app-item-list [type]="'DAILY'" [initialData$]="dailyList$" [onAddItem]="addDaily.bind(this)"></app-item-list>
 </mat-card>

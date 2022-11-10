@@ -1,44 +1,26 @@
 <div>
-  <form [formGroup]="newTodoForm" class="flex mt-4">
     <mat-form-field appearance="fill"
       ><input
         matInput
         placeholder="Add daily"
-        formControlName="todoItem"
         (keyup.enter)="addTask()"
         autocomplete="off"
-        #textInput
+        [formControl]="nameControl"
     /></mat-form-field>
-  </form>
 </div>
 
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <div *ngIf="type == 'DAILY'">
+<ng-container *ngIf="(filteredData$ | async) as data">
+  <div
+    cdkDropList
+    class="example-list"
+    (cdkDropListDropped)="drop($event, data)"
+  >
     <app-item
       [value]="value"
-      *ngFor="let value of filteredDailyList; index as i"
+      *ngFor="let value of data; index as index"
       cdkDrag
-      (inputDataChange)="removeTask(i)"
+      (inputDataChange)="removeTask(index)"
     >
     </app-item>
   </div>
-
-  <div *ngIf="type == 'TODO'">
-    <app-item
-      [value]="value"
-      *ngFor="let value of filteredTodoList; index as i"
-      cdkDrag
-      (inputDataChange)="removeTask(i)"
-    >
-    </app-item>
-  </div>
-  <div *ngIf="type == 'HABIT'">
-    <app-item
-      [value]="value"
-      *ngFor="let value of filteredHabitList; index as i"
-      cdkDrag
-      (inputDataChange)="removeTask(i)"
-    >
-    </app-item>
-  </div>
-</div>
+</ng-container>
