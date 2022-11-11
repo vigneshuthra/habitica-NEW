@@ -26,6 +26,7 @@ export class ItemListComponent implements OnInit {
   addValue: any;
   IsChecked: boolean;
   private _unsubscribe$ = new Subject<void>();
+  data: any;
 
   constructor(private _homeService: HomeService) {
     this.IsChecked = false;
@@ -41,22 +42,19 @@ export class ItemListComponent implements OnInit {
         )
       );
     }
-   // console.log(this.initialData$);
-    
+    // console.log(this.initialData$);
   }
   counter = 0;
 
   addTask() {
     if (this.onAddItem) {
-      
       this.onAddItem(this.nameControl.value);
       this.nameControl.reset();
     }
   }
-  markDone(value: any) {}
 
-  removeTask(index: any) {
-   
+  removeTask(data: any, index: any) {
+    data.splice(index, 1);
   }
 
   drop(event: CdkDragDrop<string[]>, data: TaskType[]) {
@@ -74,12 +72,10 @@ export class ItemListComponent implements OnInit {
     value: string | null,
     data: Array<DailyTask | TodoTask>
   ): Array<DailyTask | TodoTask> {
-    
     return value
       ? data.filter((dailyItem) =>
           dailyItem.task.toLowerCase().includes(value.toLowerCase())
         )
       : data;
   }
-
 }

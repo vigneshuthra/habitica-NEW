@@ -1,6 +1,4 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ItemType } from '../item-list/item.data';
 
 @Component({
   selector: 'app-item',
@@ -8,7 +6,6 @@ import { ItemType } from '../item-list/item.data';
   styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements OnInit {
-  [x: string]: any;
 
   @Input()
   value: any;
@@ -16,16 +13,13 @@ export class ItemComponent implements OnInit {
 
   @Output() inputDataChange: EventEmitter<any> = new EventEmitter();
 
-  @Input() dailyList: any;
-
   constructor() {
     this.IsChecked = false;
   }
 
-  ngOnInit(): void {
-    console.log(this.value, "check");
-    
+  ngOnInit(): void {}
+
+  removeTask(index: any) {
+    this.inputDataChange.emit(true);
   }
-
-
 }

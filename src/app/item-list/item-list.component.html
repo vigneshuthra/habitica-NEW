@@ -1,15 +1,15 @@
 <div>
-    <mat-form-field appearance="fill"
-      ><input
-        matInput
-        placeholder="Add daily"
-        (keyup.enter)="addTask()"
-        autocomplete="off"
-        [formControl]="nameControl"
-    /></mat-form-field>
+  <mat-form-field appearance="fill"
+    ><input
+      matInput
+      placeholder="Add daily"
+      (keyup.enter)="addTask()"
+      autocomplete="off"
+      [formControl]="nameControl"
+  /></mat-form-field>
 </div>
 
-<ng-container *ngIf="(filteredData$ | async) as data">
+<ng-container *ngIf="filteredData$ | async as data">
   <div
     cdkDropList
     class="example-list"
@@ -18,8 +18,8 @@
     <app-item
       [value]="value"
       *ngFor="let value of data; index as index"
+      (inputDataChange)="removeTask(data, index)"
       cdkDrag
-      (inputDataChange)="removeTask(index)"
     >
     </app-item>
   </div>
