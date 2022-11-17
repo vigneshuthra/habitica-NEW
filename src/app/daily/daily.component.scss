@@ -1,8 +1,7 @@
 .mat-card {
-  margin-top: 10px;
-  margin-bottom: 20px;
   border-radius: 10px;
-  background-color: lightgrey;
+  background-color: #edecee;
+  color: black;
 }
 
 mat-form-field {
@@ -11,7 +10,6 @@ mat-form-field {
 .displayvalue {
   justify-content: left;
   font-size: 15px;
-  margin: 10px;
 }
 
 .addDone:hover {
