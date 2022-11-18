@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { ItemModule } from '../item/item.module';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   imports: [CommonModule,
@@ -25,6 +26,7 @@ import { ItemModule } from '../item/item.module';
     MatInputModule,
     MatBadgeModule,
     ItemModule,
+    MatTabsModule
   ],
   declarations: [ItemListComponent],
 

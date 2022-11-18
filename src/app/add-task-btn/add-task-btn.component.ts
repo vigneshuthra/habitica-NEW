@@ -1,10 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {
-  MatDialog,
-  MatDialogConfig,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 
 export interface DialogData {
@@ -18,9 +13,6 @@ export interface DialogData {
   styleUrls: ['./add-task-btn.component.scss'],
 })
 export class AddTaskBtnComponent implements OnInit {
-  animal!: string;
-  name!: string;
-
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
@@ -32,7 +24,6 @@ export class AddTaskBtnComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      this.animal = result;
     });
   }
 }

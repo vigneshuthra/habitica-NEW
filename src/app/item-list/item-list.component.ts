@@ -36,12 +36,9 @@ export class ItemListComponent implements OnInit {
   @Output() countUpdateMinus = new EventEmitter<number>();
 
   addValue: any;
-  IsChecked: boolean;
-  private _unsubscribe$ = new Subject<void>();
   data: any;
 
   constructor(private _homeService: HomeService) {
-    this.IsChecked = false;
   }
   ngOnInit(): void {
     if (this.initialData$) {
@@ -79,12 +76,7 @@ export class ItemListComponent implements OnInit {
     moveItemInArray(data, event.previousIndex, event.currentIndex);
   }
 
-  OnChange($event: any) {
-    if ($event.checked) console.log('the task is added');
-    else console.log('the task is removed');
-
-    //MatCheckboxChange {checked,MatCheckbox}
-  }
+  
 
   private _filterData(
     value: string | null,

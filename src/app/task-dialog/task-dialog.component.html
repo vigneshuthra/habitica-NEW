@@ -15,20 +15,16 @@
             matInput
             placeholder="Add a Task"
             autocomplete="off"
+            [formControl]="nameControl"
+
         /></mat-form-field>
 
-        <p>Description</p>
-        <mat-form-field appearance="outline"
-          ><input
-            matInput
-            placeholder="Add a description"
-            autocomplete="off"
-        /></mat-form-field>
+        
       </div>
 </div>
 
 <div mat-dialog-actions class="dailogAction">
-    <button mat-raised-button color="primary">Create</button>
+    <button mat-raised-button color="primary" (click)="addTask()">Create</button>
 
 </div>
 

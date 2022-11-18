@@ -22,4 +22,11 @@ export class ItemComponent implements OnInit {
   removeTask(index: any) {
     this.inputDataChange.emit(true);
   }
+
+  onChange($event: any) {
+    if ($event.checked) console.log('the task is added');
+    else console.log('the task is removed');
+
+    //MatCheckboxChange {checked,MatCheckbox}
+  }
 }

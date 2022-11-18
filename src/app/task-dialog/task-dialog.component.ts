@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../add-task-btn/add-task-btn.component';
 
 @Component({
   selector: 'app-task-dialog',
@@ -8,16 +8,21 @@ import { DialogData } from '../add-task-btn/add-task-btn.component';
   styleUrls: ['./task-dialog.component.scss']
 })
 export class TaskDialogComponent implements OnInit {
+  nameControl = new FormControl('');
 
   constructor(
     public dialogRef: MatDialogRef<TaskDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
+
   ngOnInit(): void {
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  addTask(){
+    
   }
 
 }
