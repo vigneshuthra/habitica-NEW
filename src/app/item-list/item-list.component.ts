@@ -1,5 +1,13 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { combineLatest, map, Observable, Subject, takeUntil, tap } from 'rxjs';
 import { DailyTask } from '../daily/models';
@@ -22,6 +30,10 @@ export class ItemListComponent implements OnInit {
   @Input() public type: ItemType | null = null;
   @Input() public initialData$: Observable<TaskType[]> | null = null;
   @Input() public onAddItem: Function | null = null;
+  @Input()
+  count: number = 0;
+  @Output() countUpdatePlus = new EventEmitter<number>();
+  @Output() countUpdateMinus = new EventEmitter<number>();
 
   addValue: any;
   IsChecked: boolean;
@@ -44,17 +56,23 @@ export class ItemListComponent implements OnInit {
     }
     // console.log(this.initialData$);
   }
-  counter = 0;
 
   addTask() {
     if (this.onAddItem) {
       this.onAddItem(this.nameControl.value);
+
       this.nameControl.reset();
+      this.count++;
+      this.countUpdatePlus.emit(this.count);
+      console.log(this.count);
     }
   }
 
   removeTask(data: any, index: any) {
     data.splice(index, 1);
+    this.count--;
+    this.countUpdateMinus.emit(this.count);
+    console.log(this.count);
   }
 
   drop(event: CdkDragDrop<string[]>, data: TaskType[]) {

@@ -7,6 +7,7 @@ import { ProfileBannerModule } from '../profile-banner/profile-banner.module';
 import { HabitsModule } from '../habits/habits.module';
 import { SearchbarModule } from '../searchbar/searchbar.module';
 import { HomeService } from './home.service';
+import { AddTaskBtnModule } from '../add-task-btn/add-task-btn.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HomeService } from './home.service';
       TodoListModule,
       ProfileBannerModule,
       HabitsModule,
-      SearchbarModule
+      SearchbarModule,
+      AddTaskBtnModule
   ],
   declarations: [HomeComponent],
   providers: [HomeService],

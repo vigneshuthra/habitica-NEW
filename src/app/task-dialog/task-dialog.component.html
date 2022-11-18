@@ -1,0 +1,34 @@
+<div mat-dialog-title class="dailogHeader">
+    <h1 >Create Daily</h1>
+    <div class="buttonContainer">
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-raised-button color="primary">Create</button>
+    </div>
+
+</div>
+
+<div mat-dialog-content>
+    <div class="dialogContent">
+        <p>Task</p>
+        <mat-form-field appearance="outline"
+          ><input
+            matInput
+            placeholder="Add a Task"
+            autocomplete="off"
+        /></mat-form-field>
+
+        <p>Description</p>
+        <mat-form-field appearance="outline"
+          ><input
+            matInput
+            placeholder="Add a description"
+            autocomplete="off"
+        /></mat-form-field>
+      </div>
+</div>
+
+<div mat-dialog-actions class="dailogAction">
+    <button mat-raised-button color="primary">Create</button>
+
+</div>
+

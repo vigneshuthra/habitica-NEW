@@ -13,7 +13,7 @@ export class HabitsComponent implements OnInit {
   public habitList$: Observable<HabitTask[]> | null = null;
   public filteredHabitList$: Observable<HabitTask[]> | null = null;
 
-  private _unsubscribe$ = new Subject<void>();
+  countdata: number = 0; 
 
   constructor(
     private _habitService: HabitService,
@@ -21,24 +21,20 @@ export class HabitsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._homeService.searchData$
-      .pipe(takeUntil(this._unsubscribe$))
-      .subscribe((searchValue) => {
-        // if (!searchValue) {
-        //   // do some clearing actions
-        // }
-        // this.filterData(searchValue);
-      });
+   
     this.habitList$ = this._habitService.getHabitsObservable();
-  }
-
-  ngOnDestroy() {
-    this._unsubscribe$.next();
-    this._unsubscribe$.complete();
   }
 
   public addHabit(name: string) {
     
     this._habitService.createTask(name);
   }
+
+  onUpdatedCounter(value: number): void {
+    this.countdata++;  }
+
+    onDecrementCounter(value: number): void{
+      this.countdata--;
+      }
+
 }

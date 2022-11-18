@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { DailyService } from './daily.service';
 import { DailyTask } from './models';
@@ -16,30 +16,18 @@ export class DailyComponent implements OnInit {
   public dailyList$: Observable<DailyTask[]> | null = null;
   public filteredDailyList$: Observable<DailyTask[]> | null = null;
 
-  private _unsubscribe$ = new Subject<void>();
-
+   countdata: number = 0; 
+   
   constructor(
     private _dailyService: DailyService,
     private _homeService: HomeService
   ) {}
   
   ngOnInit(): void {
-    this._homeService.searchData$
-    .pipe(takeUntil(this._unsubscribe$))
-    .subscribe((searchValue) => {
-      // if (!searchValue) {
-      //   // do some clearing actions
-      // }
-      // this.filterData(searchValue);
-    });
+    
 
   this.dailyList$ = this._dailyService.getDailiesObservable();
 
-  }
-
-  ngOnDestroy() {
-    this._unsubscribe$.next();
-    this._unsubscribe$.complete();
   }
 
   public addDaily(name: string){
@@ -49,5 +37,15 @@ export class DailyComponent implements OnInit {
     this._dailyService.createTask(name);
 
   }
+
+  onUpdatedCounter(value: number): void {
+    this.countdata++;  }
+
+    onDecrementCounter(value: number): void{
+      this.countdata--;
+      }
+
 }
+
+
 

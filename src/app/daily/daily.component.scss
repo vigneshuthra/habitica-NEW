@@ -80,16 +80,13 @@ mat-form-field {
   justify-content: left;
 }
 
-.titleBadge {
+.titlecontainer {
   display: flex;
+  align-items: center;
 }
 
-.badgecontainer {
-  width: 10px;
-  height: 10px;
-  margin: 15px;
+.badgecontainer{
+  width: 5px;
+  height: 15px;
 }
 
-.number-display {
-  font-size: 1em;
-}

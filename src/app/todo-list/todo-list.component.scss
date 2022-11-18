@@ -76,18 +76,12 @@
     justify-content: left;
   }
   
-  .titleBadge{
+  .titlecontainer {
     display: flex;
-   }
-  
-   .badgecontainer {
-    
-    width: 10px;
-    height: 10px;
-    margin: 15px;
-  
+    align-items: center;
   }
   
-  .number-display {
-    font-size: 1em;
+  .badgecontainer{
+    width: 5px;
+    height: 15px;
   }

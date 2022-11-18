@@ -1,8 +1,22 @@
 <mat-card>
-  <div class="titleBadge">
-    <h1>Habits</h1>
-    <div class="badgecontainer"></div>
+  <div class="titlecontainer">
+    <div>
+      <h1>Habits</h1>
+    </div>
+    <div
+      matBadge="{{ countdata }}"
+      matBadgeSize="small"
+      matBadgeOverlap="false"
+      class="badgecontainer"
+    ></div>
   </div>
 
-  <app-item-list [type]="'HABIT'" [initialData$]="habitList$" [onAddItem]="addHabit.bind(this)"></app-item-list>
+  <app-item-list
+    (countUpdateMinus)="onDecrementCounter($event)"
+    (countUpdatePlus)="onUpdatedCounter($event)"
+    [count]="countdata"
+    [type]="'HABIT'"
+    [initialData$]="habitList$"
+    [onAddItem]="addHabit.bind(this)"
+  ></app-item-list>
 </mat-card>

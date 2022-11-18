@@ -2,10 +2,15 @@
 
 
 <div class="bodyMain">
-  <div class="searchbar">
-    <app-searchbar (onInputChange)="onSearch($event)"></app-searchbar>
+  <div class="bodyhead">
+    <div></div>
+    <div class="searchbar">
+      <app-searchbar (onInputChange)="onSearch($event)"></app-searchbar>
+    </div>
+    <div class="addTaskBtn">
+    <app-add-task-btn></app-add-task-btn>
+    </div>
   </div>
-
     <div class="flex-row-container">
     <div class="flex-row-item">
       <app-daily></app-daily>

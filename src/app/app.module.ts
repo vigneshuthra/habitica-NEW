@@ -22,11 +22,14 @@ import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ItemComponent } from './item/item.component';
 import { ItemListComponent } from './item-list/item-list.component';
+import { AddTaskBtnComponent } from './add-task-btn/add-task-btn.component';
+import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    
   ],
 
   imports: [

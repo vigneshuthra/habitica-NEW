@@ -17,7 +17,7 @@ export class TodoListComponent implements OnInit {
   public todoList$: Observable<DailyTask[]> | null = null;
   public filteredTodoList$: Observable<DailyTask[]> | null = null;
 
-  private _unsubscribe$ = new Subject<void>();
+  countdata: number = 0; 
 
   constructor(
     private _todoService: TodoService,
@@ -25,20 +25,8 @@ export class TodoListComponent implements OnInit {
   ) {}
   
   ngOnInit(): void {
-    this._homeService.searchData$
-    .pipe(takeUntil(this._unsubscribe$))
-    .subscribe((searchValue) => {
-      // if (!searchValue) {
-      //   // do some clearing actions
-      // }
-      // this.filterData(searchValue);
-    });
+    
     this.todoList$ = this._todoService.getTodosObservable();
-  }
-
-  ngOnDestroy() {
-    this._unsubscribe$.next();
-    this._unsubscribe$.complete();
   }
 
   public addTodo(name: string){
@@ -48,4 +36,11 @@ export class TodoListComponent implements OnInit {
     this._todoService.createTask(name);
 
   }
+  onUpdatedCounter(value: number): void {
+    this.countdata++;  }
+
+    onDecrementCounter(value: number): void{
+      this.countdata--;
+      }
+
 }
