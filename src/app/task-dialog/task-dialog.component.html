@@ -15,16 +15,15 @@
             matInput
             placeholder="Add a Task"
             autocomplete="off"
+            (keyup.enter)="addDailogTask()"
             [formControl]="nameControl"
 
         /></mat-form-field>
-
-        
       </div>
 </div>
 
 <div mat-dialog-actions class="dailogAction">
-    <button mat-raised-button color="primary" (click)="addTask()">Create</button>
+    <button mat-raised-button color="primary" (click)="addDailogTask()">Create</button>
 
 </div>
 

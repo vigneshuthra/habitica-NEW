@@ -1,5 +1,5 @@
 <div class="listContainer">
-  <div class="checkContainer">
+  <div class="checkContainer" [style.backgroundColor]="IsChecked ? 'grey': '#ff6165' ">
     <div>
       <mat-checkbox color="secondary" [(ngModel)]="IsChecked" (change)="onChange($event, value.task)"></mat-checkbox>
     </div>

@@ -16,7 +16,6 @@ export class DailyComponent implements OnInit {
   countdata: number = 0;
   constructor(
     private _dailyService: DailyService,
-    private _homeService: HomeService
   ) {}
 
   ngOnInit(): void {
