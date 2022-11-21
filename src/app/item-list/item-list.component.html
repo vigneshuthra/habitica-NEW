@@ -19,6 +19,8 @@
       [value]="value"
       *ngFor="let value of data; index as index"
       (inputDataChange)="removeTask(data, index)"
+      (checkTask)="addCheckedTask($event, data)"
+
       cdkDrag
     >
     </app-item>

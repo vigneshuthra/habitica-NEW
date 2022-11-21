@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CoinService {
-  public coin =0;
+  public coin =10;
 
   setCount(){
     this.coin =this.coin + 10; 

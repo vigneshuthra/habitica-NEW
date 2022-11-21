@@ -9,11 +9,11 @@ import { CoinService } from '../coin.service';
 })
 export class ProfileBannerComponent implements OnInit {
 
-public coom : Observable<number> | null=null;
-constructor(private coinservice: CoinService) { }
+public coom : number =1;
+constructor(public coinservice: CoinService) { }
 
   ngOnInit(): void {
-   //this.coom = this.coinservice.getCount();
+   this.coom = this.coinservice.getCount();
   }
 
 }

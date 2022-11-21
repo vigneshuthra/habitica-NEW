@@ -9,8 +9,9 @@ export class ItemComponent implements OnInit {
   @Input()
   value: any;
   IsChecked: boolean;
-  public ArrayChecked: any[] = [];
   @Output() inputDataChange: EventEmitter<any> = new EventEmitter();
+  @Output()
+  checkTask = new EventEmitter<any>;
 
   constructor() {
     this.IsChecked = false;
@@ -22,10 +23,9 @@ export class ItemComponent implements OnInit {
     this.inputDataChange.emit(true);
   }
 
-  onChange($event: any) {
+  onChange($event: any, name: any) {
     if ($event.checked) {
-      this.ArrayChecked.push(this.value.task, ...this.ArrayChecked);
-      console.log('the task is added', this.ArrayChecked);
+      this.checkTask.emit(this.value.task);
     } else console.log('the task is removed');
 
     //MatCheckboxChange {checked,MatCheckbox}

@@ -27,6 +27,7 @@ export class ItemListComponent implements OnInit {
   nameControl = new FormControl('');
 
   public filteredData$: Observable<TaskType[]> | null = null;
+  public arrayChecked: TaskType[] = [];
 
   @Input() public type: ItemType | null = null;
   @Input() public initialData$: Observable<TaskType[]> | null = null;
@@ -65,7 +66,7 @@ export class ItemListComponent implements OnInit {
       this.count++;
       this.countUpdatePlus.emit(this.count);
       this.coinservice.setCount();
-      console.log('coin:', this.coinservice.getCount());
+      console.log('coin:', );
     }
   }
 
@@ -74,7 +75,6 @@ export class ItemListComponent implements OnInit {
     this.count--;
     this.countUpdateMinus.emit(this.count);
     this.coinservice.decrementCount();
-    console.log('coin:', this.coinservice.getCount());
   }
 
   drop(event: CdkDragDrop<string[]>, data: TaskType[]) {
@@ -92,7 +92,10 @@ export class ItemListComponent implements OnInit {
       : data;
   }
 
-  NextCoin() {
-    this.coinservice.getCount();
+  addCheckedTask($event: any, data: any): void {
+    this.arrayChecked.push($event);
+    console.log('the task is added', this.arrayChecked);
+
   }
+
 }
