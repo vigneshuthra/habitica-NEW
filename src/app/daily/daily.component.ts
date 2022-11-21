@@ -15,7 +15,8 @@ export class DailyComponent implements OnInit {
 
   countdata: number = 0;
   constructor(
-    private _dailyService: DailyService,
+    public _dailyService: DailyService,
+    private _homeService: HomeService
   ) {}
 
   ngOnInit(): void {
@@ -24,14 +25,10 @@ export class DailyComponent implements OnInit {
 
   public addDaily(name: string) {
     console.log(typeof name, 'print');
+    this._dailyService.setCount();
     this._dailyService.createTask(name);
   }
 
-  onUpdatedCounter(value: number): void {
-    this.countdata++;
-  }
+  
 
-  onDecrementCounter(value: number): void {
-    this.countdata--;
-  }
 }

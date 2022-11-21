@@ -5,7 +5,7 @@
         <h1>Daily</h1>
       </div>
       <div
-        matBadge="{{ countdata }}"
+        matBadge="{{ this._dailyService.getCount()}}"
         matBadgeSize="small"
         matBadgeOverlap="false"
         class="badgecontainer"
@@ -20,10 +20,7 @@
     </div>
   </div>
   <app-item-list
-    (countUpdateMinus)="onDecrementCounter($event)"
-    (countUpdatePlus)="onUpdatedCounter($event)"
-    [count]="countdata"
-    [type]="'DAILY'"
+     [type]="'DAILY'"
     [initialData$]="dailyList$"
     [onAddItem]="addDaily.bind(this)"
   ></app-item-list>

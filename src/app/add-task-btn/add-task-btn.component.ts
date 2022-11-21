@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
+import { TaskTodoDialogComponent } from '../task-todo-dialog/task-todo-dialog.component';
 
 export interface DialogData {
   animal: string;
@@ -16,7 +17,7 @@ export class AddTaskBtnComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
-  openDialog(): void {
+  openDailyDialog(): void {
     const dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '500px',
       height: '500px',
@@ -26,4 +27,17 @@ export class AddTaskBtnComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
+
+  openTodoDialog(): void {
+    const todoDialogRef = this.dialog.open(TaskTodoDialogComponent, {
+      width: '500px',
+      height: '500px',
+    });
+
+    todoDialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
+
 }

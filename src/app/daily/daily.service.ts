@@ -26,4 +26,20 @@ export class DailyService {
       const dailyTask: DailyTask = { task: newTask, type: 'DAILY' };
       this.setDailies([dailyTask, ...this.getDailies()])
   }
+
+  public count = 0;
+
+  public setCount(){
+    this.count++ 
+  }
+  
+  public getCount():number{
+    return this.count;
+
+  }
+
+  public decrementCount(){
+    this.count--;
+  }
+
 }

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HabitsComponent } from './habits/habits.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { ProfileBannerComponent } from './profile-banner/profile-banner.component';
+import { ProfileBannerComponent} from './profile-banner/profile-banner.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
@@ -24,31 +24,34 @@ import { ItemComponent } from './item/item.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { AddTaskBtnComponent } from './add-task-btn/add-task-btn.component';
 import { TaskDialogComponent } from './task-dialog/task-dialog.component';
+import { TaskTodoDialogComponent } from './task-todo-dialog/task-todo-dialog.component';
+import { ShopComponent } from './shop/shop.component';
+import { InventoryComponent } from './inventory/inventory.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    
-  ],
-
-  imports: [
-    BrowserModule,
-    CommonModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatCardModule,
-    MatInputModule,
-    HomeModule,
-    HttpClientModule,
-    MatCheckboxModule
-  ],
-  exports: [AppRoutingModule],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        LoginComponent,
+       
+    ],
+    exports: [AppRoutingModule],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        CommonModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatInputModule,
+        HomeModule,
+        HttpClientModule,
+        MatCheckboxModule,
+        
+    ]
 })
 export class AppModule {}

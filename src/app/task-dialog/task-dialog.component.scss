@@ -3,6 +3,9 @@
     color: black !important;
  }
 
+ ::placeholder{
+  color: grey;
+ }
  
  .dailogHeader{
     display: flex;
@@ -17,6 +20,7 @@
  }
  .dialogContent{
    margin-top: 40px;
+   color: black;
  }
 
  .dailogAction{

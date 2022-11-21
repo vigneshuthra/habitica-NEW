@@ -11,8 +11,10 @@ import {
 import { FormControl } from '@angular/forms';
 import { combineLatest, map, Observable, Subject, takeUntil, tap } from 'rxjs';
 import { CoinService } from '../coin.service';
+import { DailyService } from '../daily/daily.service';
 import { DailyTask } from '../daily/models';
 import { HomeService } from '../home/home.service';
+import { TodoService } from '../todo-list/todo-list.service';
 import { TodoTask } from '../todo-list/todomodels';
 import { ItemType } from './item.data';
 
@@ -43,7 +45,10 @@ export class ItemListComponent implements OnInit {
 
   constructor(
     private _homeService: HomeService,
-    private coinservice: CoinService
+    private coinservice: CoinService,
+    private _dailyService: DailyService,
+    private _todoService: TodoService
+
   ) {}
   ngOnInit(): void {
     if (this.initialData$) {
@@ -63,17 +68,16 @@ export class ItemListComponent implements OnInit {
     if (this.onAddItem) {
       this.onAddItem(this.nameControl.value);
       this.nameControl.reset();
-      this.count++;
-      this.countUpdatePlus.emit(this.count);
       this.coinservice.setCount();
-      console.log('coin:', );
+      console.log('coin:');
     }
   }
 
   removeTask(data: any, index: any) {
     data.splice(index, 1);
-    this.count--;
-    this.countUpdateMinus.emit(this.count);
+
+   if(this.type=='DAILY') this._dailyService.decrementCount();
+   else if(this.type=='TODO')this._todoService.decrementCount();
     this.coinservice.decrementCount();
   }
 
@@ -95,7 +99,5 @@ export class ItemListComponent implements OnInit {
   addCheckedTask($event: any, data: any): void {
     this.arrayChecked.push($event);
     console.log('the task is added', this.arrayChecked);
-
   }
-
 }

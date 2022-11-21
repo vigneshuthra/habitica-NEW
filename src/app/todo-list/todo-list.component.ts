@@ -16,7 +16,7 @@ export class TodoListComponent implements OnInit {
   countdata: number = 0;
 
   constructor(
-    private _todoService: TodoService,
+    public _todoService: TodoService,
     private _homeService: HomeService
   ) {}
 
@@ -26,14 +26,8 @@ export class TodoListComponent implements OnInit {
 
   public addTodo(name: string) {
     console.log(typeof name, 'print');
-
+    this._todoService.setCount();
     this._todoService.createTask(name);
   }
-  onUpdatedCounter(value: number): void {
-    this.countdata++;
-  }
-
-  onDecrementCounter(value: number): void {
-    this.countdata--;
-  }
+ 
 }
