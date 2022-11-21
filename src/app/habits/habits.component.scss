@@ -23,7 +23,13 @@ mat-form-field {
 
 .titlecontainer {
   display: flex;
-  align-items: center;
+  align-items:baseline;
+  justify-content: space-between;
+}
+
+.righTitle{
+display: flex;
+align-items: center;
 }
 
 .badgecontainer{

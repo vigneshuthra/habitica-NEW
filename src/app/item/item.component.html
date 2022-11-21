@@ -1,7 +1,7 @@
 <div class="listContainer">
   <div class="checkContainer">
     <div>
-      <mat-checkbox color="secondary" [checked]="IsChecked" (change)="onChange($event)"></mat-checkbox>
+      <mat-checkbox color="secondary" [(ngModel)]="IsChecked" (change)="onChange($event)"></mat-checkbox>
     </div>
   </div>
 

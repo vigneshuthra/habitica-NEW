@@ -12,6 +12,7 @@ import { TodoListComponent } from './todo-list.component';
 import { TodoService } from './todo-list.service';
 import {MatBadgeModule} from '@angular/material/badge';
 import { ItemListModule } from '../item-list/item-list.module';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ItemListModule } from '../item-list/item-list.module';
     DragDropModule,
     MatInputModule,
     MatBadgeModule,
-    ItemListModule
+    ItemListModule,
+    MatTabsModule
   ],
   declarations: [TodoListComponent],
   providers:[TodoService],

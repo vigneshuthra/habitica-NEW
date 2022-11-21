@@ -36,11 +36,14 @@ export class ItemListComponent implements OnInit {
   @Output() countUpdatePlus = new EventEmitter<number>();
   @Output() countUpdateMinus = new EventEmitter<number>();
 
-  coin :number = 1;
+  coin: number = 1;
   addValue: any;
   data: any;
 
-  constructor(private _homeService: HomeService,private coinservice: CoinService) {}
+  constructor(
+    private _homeService: HomeService,
+    private coinservice: CoinService
+  ) {}
   ngOnInit(): void {
     if (this.initialData$) {
       this.filteredData$ = combineLatest([
@@ -58,14 +61,11 @@ export class ItemListComponent implements OnInit {
   addTask() {
     if (this.onAddItem) {
       this.onAddItem(this.nameControl.value);
-
       this.nameControl.reset();
       this.count++;
       this.countUpdatePlus.emit(this.count);
       this.coinservice.setCount();
-      this.coinservice.getCount();
-      console.log('coin:',this.coinservice.getCount());
-
+      console.log('coin:', this.coinservice.getCount());
     }
   }
 
@@ -74,7 +74,6 @@ export class ItemListComponent implements OnInit {
     this.count--;
     this.countUpdateMinus.emit(this.count);
     this.coinservice.decrementCount();
-    
     console.log('coin:', this.coinservice.getCount());
   }
 
@@ -93,8 +92,7 @@ export class ItemListComponent implements OnInit {
       : data;
   }
 
-NextCoin(){
-  this.coinservice.getCount();
-}
-
+  NextCoin() {
+    this.coinservice.getCount();
+  }
 }

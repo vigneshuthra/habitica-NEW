@@ -6,11 +6,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements OnInit {
-
   @Input()
   value: any;
   IsChecked: boolean;
-
+  public ArrayChecked: any[] = [];
   @Output() inputDataChange: EventEmitter<any> = new EventEmitter();
 
   constructor() {
@@ -24,8 +23,10 @@ export class ItemComponent implements OnInit {
   }
 
   onChange($event: any) {
-    if ($event.checked) console.log('the task is added');
-    else console.log('the task is removed');
+    if ($event.checked) {
+      this.ArrayChecked.push(this.value.task, ...this.ArrayChecked);
+      console.log('the task is added', this.ArrayChecked);
+    } else console.log('the task is removed');
 
     //MatCheckboxChange {checked,MatCheckbox}
   }

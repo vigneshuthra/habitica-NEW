@@ -13,6 +13,7 @@ import { DailyService } from './daily.service';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ItemModule } from '../item/item.module';
 import { ItemListModule } from '../item-list/item-list.module';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { ItemListModule } from '../item-list/item-list.module';
     MatInputModule,
     MatBadgeModule,
     ItemListModule,
+    MatTabsModule
   ],
   declarations: [DailyComponent],
   providers: [DailyService],

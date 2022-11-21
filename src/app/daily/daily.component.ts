@@ -25,7 +25,6 @@ export class DailyComponent implements OnInit {
 
   public addDaily(name: string) {
     console.log(typeof name, 'print');
-
     this._dailyService.createTask(name);
   }
 

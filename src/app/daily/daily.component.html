@@ -1,14 +1,23 @@
 <mat-card>
   <div class="titlecontainer">
-    <div>
-      <h1>Daily</h1>
+    <div class="righTitle">
+      <div>
+        <h1>Daily</h1>
+      </div>
+      <div
+        matBadge="{{ countdata }}"
+        matBadgeSize="small"
+        matBadgeOverlap="false"
+        class="badgecontainer"
+      ></div>
     </div>
-    <div
-      matBadge="{{ countdata }}"
-      matBadgeSize="small"
-      matBadgeOverlap="false"
-      class="badgecontainer"
-    ></div>
+    <div class="tabContainer">
+      <mat-tab-group animationDuration="0ms">
+        <mat-tab label="All">  </mat-tab>
+        <mat-tab label="Due">  </mat-tab>
+        <mat-tab label="NotDue">  </mat-tab>
+      </mat-tab-group>
+    </div>
   </div>
   <app-item-list
     (countUpdateMinus)="onDecrementCounter($event)"
