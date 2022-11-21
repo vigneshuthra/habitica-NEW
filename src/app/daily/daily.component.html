@@ -3,8 +3,12 @@
     <div>
       <h1>Daily</h1>
     </div>
-    <div matBadge="{{ countdata }}" matBadgeSize="small" matBadgeOverlap="false" class="badgecontainer">
-    </div>
+    <div
+      matBadge="{{ countdata }}"
+      matBadgeSize="small"
+      matBadgeOverlap="false"
+      class="badgecontainer"
+    ></div>
   </div>
   <app-item-list
     (countUpdateMinus)="onDecrementCounter($event)"

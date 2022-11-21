@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { combineLatest, map, Observable, Subject, takeUntil, tap } from 'rxjs';
+import { CoinService } from '../coin.service';
 import { DailyTask } from '../daily/models';
 import { HomeService } from '../home/home.service';
 import { TodoTask } from '../todo-list/todomodels';
@@ -35,11 +36,11 @@ export class ItemListComponent implements OnInit {
   @Output() countUpdatePlus = new EventEmitter<number>();
   @Output() countUpdateMinus = new EventEmitter<number>();
 
+  coin :number = 1;
   addValue: any;
   data: any;
 
-  constructor(private _homeService: HomeService) {
-  }
+  constructor(private _homeService: HomeService,private coinservice: CoinService) {}
   ngOnInit(): void {
     if (this.initialData$) {
       this.filteredData$ = combineLatest([
@@ -61,7 +62,10 @@ export class ItemListComponent implements OnInit {
       this.nameControl.reset();
       this.count++;
       this.countUpdatePlus.emit(this.count);
-      console.log(this.count);
+      this.coinservice.setCount();
+      this.coinservice.getCount();
+      console.log('coin:',this.coinservice.getCount());
+
     }
   }
 
@@ -69,14 +73,14 @@ export class ItemListComponent implements OnInit {
     data.splice(index, 1);
     this.count--;
     this.countUpdateMinus.emit(this.count);
-    console.log(this.count);
+    this.coinservice.decrementCount();
+    
+    console.log('coin:', this.coinservice.getCount());
   }
 
   drop(event: CdkDragDrop<string[]>, data: TaskType[]) {
     moveItemInArray(data, event.previousIndex, event.currentIndex);
   }
-
-  
 
   private _filterData(
     value: string | null,
@@ -88,4 +92,9 @@ export class ItemListComponent implements OnInit {
         )
       : data;
   }
+
+NextCoin(){
+  this.coinservice.getCount();
+}
+
 }

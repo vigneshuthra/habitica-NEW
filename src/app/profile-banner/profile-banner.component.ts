@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CoinService } from '../coin.service';
 
 @Component({
   selector: 'app-profile-banner',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileBannerComponent implements OnInit {
 
-  constructor() { }
+public coom : Observable<number> | null=null;
+constructor(private coinservice: CoinService) { }
 
   ngOnInit(): void {
+   //this.coom = this.coinservice.getCount();
   }
 
 }
