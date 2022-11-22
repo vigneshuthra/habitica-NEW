@@ -1,0 +1,32 @@
+::ng-deep mat-dialog-container {
+    background-color: #edecee !important;
+    color: black !important;
+ }
+
+ ::placeholder{
+  color: grey;
+ }
+ 
+ .dailogHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+ }
+
+ mat-form-field{
+   width: 100%; 
+   
+ }
+ .dialogContent{
+   margin-top: 40px;
+   color: black;
+ }
+
+ .dailogAction{
+   align-items: center;
+   justify-content: center;
+ }
+
+
+ 

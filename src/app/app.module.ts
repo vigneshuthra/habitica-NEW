@@ -27,6 +27,7 @@ import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 import { TaskTodoDialogComponent } from './task-todo-dialog/task-todo-dialog.component';
 import { ShopComponent } from './shop/shop.component';
 import { InventoryComponent } from './inventory/inventory.component';
+import { TaskHabitDialogComponent } from './task-habit-dialog/task-habit-dialog.component';
 
 @NgModule({
     declarations: [

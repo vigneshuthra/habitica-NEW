@@ -5,7 +5,7 @@
         <h1>Habits</h1>
       </div>
       <div
-        matBadge="{{ countdata }}"
+        matBadge="{{ this._habitService.getCount() }}"
         matBadgeSize="small"
         matBadgeOverlap="false"
         class="badgecontainer"
@@ -21,9 +21,6 @@
   </div>
 
   <app-item-list
-    (countUpdateMinus)="onDecrementCounter($event)"
-    (countUpdatePlus)="onUpdatedCounter($event)"
-    [count]="countdata"
     [type]="'HABIT'"
     [initialData$]="habitList$"
     [onAddItem]="addHabit.bind(this)"

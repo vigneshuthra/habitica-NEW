@@ -13,12 +13,14 @@ import { combineLatest, map, Observable, Subject, takeUntil, tap } from 'rxjs';
 import { CoinService } from '../coin.service';
 import { DailyService } from '../daily/daily.service';
 import { DailyTask } from '../daily/models';
+import { HabitTask } from '../habits/habitmodels';
+import { HabitService } from '../habits/habits.service';
 import { HomeService } from '../home/home.service';
 import { TodoService } from '../todo-list/todo-list.service';
 import { TodoTask } from '../todo-list/todomodels';
 import { ItemType } from './item.data';
 
-type TaskType = DailyTask | TodoTask;
+type TaskType = DailyTask | TodoTask | HabitTask;
 
 @Component({
   selector: 'app-item-list',
@@ -47,8 +49,8 @@ export class ItemListComponent implements OnInit {
     private _homeService: HomeService,
     private coinservice: CoinService,
     private _dailyService: DailyService,
-    private _todoService: TodoService
-
+    private _todoService: TodoService,
+    private _habitservice: HabitService
   ) {}
   ngOnInit(): void {
     if (this.initialData$) {
@@ -69,15 +71,15 @@ export class ItemListComponent implements OnInit {
       this.onAddItem(this.nameControl.value);
       this.nameControl.reset();
       this.coinservice.setCount();
-      console.log('coin:');
     }
   }
 
   removeTask(data: any, index: any) {
     data.splice(index, 1);
 
-   if(this.type=='DAILY') this._dailyService.decrementCount();
-   else if(this.type=='TODO')this._todoService.decrementCount();
+    if (this.type == 'DAILY') this._dailyService.decrementCount();
+    else if (this.type == 'TODO') this._todoService.decrementCount();
+    else this._habitservice.decrementCount();
     this.coinservice.decrementCount();
   }
 

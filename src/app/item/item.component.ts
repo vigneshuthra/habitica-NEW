@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CoinService } from '../coin.service';
 
 @Component({
   selector: 'app-item',
@@ -11,9 +12,9 @@ export class ItemComponent implements OnInit {
   IsChecked: boolean;
   @Output() inputDataChange: EventEmitter<any> = new EventEmitter();
   @Output()
-  checkTask = new EventEmitter<any>;
+  checkTask = new EventEmitter<any>();
 
-  constructor() {
+  constructor(private _coinservice: CoinService) {
     this.IsChecked = false;
   }
 
@@ -26,7 +27,11 @@ export class ItemComponent implements OnInit {
   onChange($event: any, name: any) {
     if ($event.checked) {
       this.checkTask.emit(this.value.task);
-    } else console.log('the task is removed');
+      this._coinservice.setCount();
+    } else {
+      this._coinservice.decrementCount();
+      console.log('the task is removed');
+    }
 
     //MatCheckboxChange {checked,MatCheckbox}
   }

@@ -35,6 +35,6 @@ export class LoginComponent implements OnInit {
       return;
     }
     localStorage.setItem('user', this.loginForm.value);
-    this.router.navigate(['/home']);
+    this.router.navigate(['/tasks']);
   }
 }

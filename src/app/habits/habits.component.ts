@@ -16,7 +16,7 @@ export class HabitsComponent implements OnInit {
   countdata: number = 0; 
 
   constructor(
-    private _habitService: HabitService,
+    public _habitService: HabitService,
     private _homeService: HomeService
   ) {}
 
@@ -27,14 +27,10 @@ export class HabitsComponent implements OnInit {
 
   public addHabit(name: string) {
     
+    this._habitService.setCount();
+
     this._habitService.createTask(name);
+     
   }
-
-  onUpdatedCounter(value: number): void {
-    this.countdata++;  }
-
-    onDecrementCounter(value: number): void{
-      this.countdata--;
-      }
 
 }

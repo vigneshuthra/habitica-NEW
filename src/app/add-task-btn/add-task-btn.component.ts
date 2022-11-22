@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
+import { TaskHabitDialogComponent } from '../task-habit-dialog/task-habit-dialog.component';
 import { TaskTodoDialogComponent } from '../task-todo-dialog/task-todo-dialog.component';
 
 export interface DialogData {
@@ -36,6 +37,17 @@ export class AddTaskBtnComponent implements OnInit {
     });
 
     todoDialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  openHabitDialog():void{
+    const habitDialogRef = this.dialog.open(TaskHabitDialogComponent, {
+      width: '500px',
+      height: '500px',
+    });
+
+    habitDialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
   }
