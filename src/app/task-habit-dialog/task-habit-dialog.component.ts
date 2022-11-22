@@ -25,7 +25,7 @@ export class TaskHabitDialogComponent implements OnInit {
     this.habitDialogRef.close();
   }
 
-  addDailogTask() {
+  addHabitDailogTask() {
     if (this.nameControl.value) {
       this.$value = this.nameControl.value;
       this._habitservice.createTask(this.$value);

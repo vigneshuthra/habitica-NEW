@@ -2,7 +2,7 @@
     <h1 >Create New ToDo</h1>
     <div class="buttonContainer">
         <button mat-button (click)="onNoClick()">Cancel</button>
-        <button mat-raised-button color="primary">Create</button>
+        <button mat-raised-button (click)="addTodoDailogTask()" color="primary">Create</button>
     </div>
 
 </div>
@@ -15,7 +15,7 @@
             matInput
             placeholder="Add a Task"
             autocomplete="off"
-            (keyup.enter)="addDailogTask()"
+            (keyup.enter)="addTodoDailogTask()"
             [formControl]="nameControl"
 
         /></mat-form-field>
@@ -26,7 +26,7 @@
             matInput
             placeholder="Add a Description"
             autocomplete="off"
-            (keyup.enter)="addDailogTask()"
+            (keyup.enter)="addTodoDailogTask()"
             [formControl]="nameControl"
 
         /></mat-form-field>
@@ -34,7 +34,7 @@
 </div>
 
 <div mat-dialog-actions class="dailogAction">
-    <button mat-raised-button color="primary" (click)="addDailogTask()">Create</button>
+    <button mat-raised-button color="primary" (click)="addTodoDailogTask()">Create</button>
 
 </div>
 

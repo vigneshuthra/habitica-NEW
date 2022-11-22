@@ -26,7 +26,7 @@ export class TaskTodoDialogComponent implements OnInit {
     this.todoDialogRef.close();
   }
 
-  addDailogTask() {
+  addTodoDailogTask() {
     if (this.nameControl.value) {this.$value = this.nameControl.value;
     this._todoservice.createTask(this.$value);
     this.nameControl.reset();
