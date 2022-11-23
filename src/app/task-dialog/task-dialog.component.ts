@@ -29,7 +29,7 @@ export class TaskDialogComponent implements OnInit {
 
   addDailogTask() {
     if (this.nameControl.value) {this.$value = this.nameControl.value;
-    this._dailyService.createTask(this.$value);
+   //this._dailyService.createTask(this.$value);
     this.nameControl.reset();
     this._dailyService.setCount();
     this._coinservice.setCount();

@@ -3,6 +3,7 @@ import { Observable, Subject, takeUntil } from 'rxjs';
 import { DailyTask } from '../daily/models';
 import { HomeService } from '../home/home.service';
 import { TodoService } from './todo-list.service';
+import { TodoTask } from './todomodels';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,8 +11,8 @@ import { TodoService } from './todo-list.service';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
-  public todoList$: Observable<DailyTask[]> | null = null;
-  public filteredTodoList$: Observable<DailyTask[]> | null = null;
+  public todoList$: Observable<TodoTask[]> | null = null;
+  public filteredTodoList$: Observable<TodoTask[]> | null = null;
 
   countdata: number = 0;
 
@@ -24,10 +25,12 @@ export class TodoListComponent implements OnInit {
     this.todoList$ = this._todoService.getTodosObservable();
   }
 
-  public addTodo(name: string) {
-    console.log(typeof name, 'print');
-    this._todoService.setCount();
-    this._todoService.createTask(name);
+  public addAddTodo(name: string) {
+    this._todoService.addTodo(name)
+
+   // console.log(typeof name, 'print');
+   // this._todoService.setCount();
+   // this._todoService.createTask(name);
   }
  
 }

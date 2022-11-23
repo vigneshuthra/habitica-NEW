@@ -19,12 +19,10 @@ export class DailyService {
     return this._dailies$.asObservable();
   }
 
-  public createTask(newTask: string): void{
+  public createTask(newTask: DailyTask): void{
 
-    console.log( "check");
-
-      const dailyTask: DailyTask = { task: newTask, type: 'DAILY' };
-      this.setDailies([dailyTask, ...this.getDailies()])
+    console.log( "createTask", newTask);
+    this.setDailies([newTask, ...this.getDailies()])
   }
 
   public count = 0;
@@ -41,5 +39,18 @@ export class DailyService {
   public decrementCount(){
     this.count--;
   }
+
+
+  public addDaily(name: string) {
+    this.createTask({ task: name, type: 'DAILY', status: 'DUE' });
+    this.setCount();
+
+    //console.log(typeof name, 'print');
+
+   // this._dailyService.setCount();
+   // this._dailyService.createTask(name);
+  }
+
+
 
 }

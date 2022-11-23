@@ -5,7 +5,7 @@ import { TodoTask } from './todomodels';
 
 @Injectable({ providedIn: 'root' })
 export class TodoService {
-  private _todos$ = new BehaviorSubject<DailyTask[]>([]);
+  private _todos$ = new BehaviorSubject<TodoTask[]>([]);
 
   public getTodos(): TodoTask[] {
     return this._todos$.getValue();
@@ -19,11 +19,10 @@ export class TodoService {
     return this._todos$.asObservable();
   }
 
-  public createTask(newTask: string): void {
-    console.log('check');
+  public createTask(newTask: TodoTask): void {
+    console.log('createTask', newTask);
 
-    const todoTask: TodoTask = { task: newTask, type: 'TODO' };
-    this.setTodos([todoTask, ...this.getTodos()]);
+    this.setTodos([newTask, ...this.getTodos()]);
   }
 
   public count = 0;
@@ -39,4 +38,11 @@ export class TodoService {
   public decrementCount() {
     this.count--;
   }
+
+  public addTodo(name: string): void{
+    this.createTask({ task: name, type: 'TODO', status: 'ACTIVE' });
+    this.setCount();
+
+  }
+
 }

@@ -28,7 +28,7 @@ export class TaskHabitDialogComponent implements OnInit {
   addHabitDailogTask() {
     if (this.nameControl.value) {
       this.$value = this.nameControl.value;
-      this._habitservice.createTask(this.$value);
+    //  this._habitservice.createTask(this.$value);
       this.nameControl.reset();
       this._habitservice.setCount();
       this._coinservice.setCount();

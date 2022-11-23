@@ -23,12 +23,13 @@ export class DailyComponent implements OnInit {
     this.dailyList$ = this._dailyService.getDailiesObservable();
   }
 
-  public addDaily(name: string) {
-    console.log(typeof name, 'print');
-    this._dailyService.setCount();
-    this._dailyService.createTask(name);
+  public onAddDaily(name: string) {
+    this._dailyService.addDaily(name)
+    // console.log(typeof name, 'print');
+    // this._dailyService.setCount();
+    // this._dailyService.createTask(name);
   }
-
+  
   
 
 }

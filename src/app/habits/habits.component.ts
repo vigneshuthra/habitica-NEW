@@ -25,11 +25,12 @@ export class HabitsComponent implements OnInit {
     this.habitList$ = this._habitService.getHabitsObservable();
   }
 
-  public addHabit(name: string) {
+  public onAddHabit(name: string) {
     
-    this._habitService.setCount();
+    this._habitService.addHabit(name);
+  //  this._habitService.setCount();
 
-    this._habitService.createTask(name);
+   // this._habitService.createTask(name);
      
   }
 

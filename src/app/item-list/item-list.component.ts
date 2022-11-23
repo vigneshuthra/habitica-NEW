@@ -20,7 +20,7 @@ import { TodoService } from '../todo-list/todo-list.service';
 import { TodoTask } from '../todo-list/todomodels';
 import { ItemType } from './item.data';
 
-type TaskType = DailyTask | TodoTask | HabitTask;
+type TaskType = DailyTask | TodoTask | HabitTask ;
 
 @Component({
   selector: 'app-item-list',
@@ -89,8 +89,8 @@ export class ItemListComponent implements OnInit {
 
   private _filterData(
     value: string | null,
-    data: Array<DailyTask | TodoTask>
-  ): Array<DailyTask | TodoTask> {
+    data: Array<DailyTask | TodoTask| HabitTask>
+  ): Array<DailyTask | TodoTask | HabitTask> {
     return value
       ? data.filter((dailyItem) =>
           dailyItem.task.toLowerCase().includes(value.toLowerCase())

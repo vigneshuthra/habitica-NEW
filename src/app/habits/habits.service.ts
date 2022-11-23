@@ -18,9 +18,10 @@ export class HabitService {
     return this._habits$.asObservable();
   }
 
-  public createTask(newTask: string): void {
-    const habitTask: HabitTask = { task: newTask, type: 'HABIT' };
-    this.setHabits([habitTask, ...this.getHabits()]);
+  public createTask(newTask: HabitTask): void {
+    console.log('CreateTask', newTask);
+
+    this.setHabits([newTask, ...this.getHabits()]);
   }
 
   public count = 0;
@@ -35,5 +36,9 @@ export class HabitService {
 
   public decrementCount() {
     this.count--;
+  }
+  public addHabit(name: string): void {
+    this.createTask({ task: name, type: 'HABIT', status: 'STRONG' });
+    this.setCount();
   }
 }
