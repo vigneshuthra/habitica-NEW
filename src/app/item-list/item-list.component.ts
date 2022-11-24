@@ -70,7 +70,7 @@ export class ItemListComponent implements OnInit {
     if (this.onAddItem) {
       this.onAddItem(this.nameControl.value);
       this.nameControl.reset();
-      this.coinservice.setCount();
+     // this.coinservice.setCount();
     }
   }
 

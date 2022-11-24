@@ -4,8 +4,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CoinService } from '../coin.service';
 import { DailyService } from '../daily/daily.service';
 import { DailyTask } from '../daily/models';
+import { HabitTask } from '../habits/habitmodels';
+import { ItemType } from '../item-list/item.data';
+import { TodoService } from '../todo-list/todo-list.service';
+import { TodoTask } from '../todo-list/todomodels';
 
-type TaskType = DailyTask;
+type TaskType = DailyTask | TodoTask | HabitTask;
 
 @Component({
   selector: 'app-task-dialog',
@@ -15,9 +19,14 @@ type TaskType = DailyTask;
 export class TaskDialogComponent implements OnInit {
   nameControl = new FormControl('');
   $value!: string;
+  @Input()
+  type!: any;
+
   constructor(
     public dialogRef: MatDialogRef<TaskDialogComponent>,
     private _dailyService: DailyService,
+    private _todoService: TodoService,
+
     private _coinservice: CoinService
   ) {}
 
@@ -28,14 +37,15 @@ export class TaskDialogComponent implements OnInit {
   }
 
   addDailogTask() {
-    if (this.nameControl.value) {this.$value = this.nameControl.value;
-   //this._dailyService.createTask(this.$value);
-    this.nameControl.reset();
-    this._dailyService.setCount();
-    this._coinservice.setCount();
+    if (this.nameControl.value) {
+      this.$value = this.nameControl.value;
+      this.nameControl.reset();
+     // this._dailyService.setCount();
+     // this._coinservice.setCount();
 
-    this.dialogRef.close();
+      this.dialogRef.close(this.$value);
 
-    console.log(this.$value);}
+      console.log(this.$value);
+    }
   }
 }

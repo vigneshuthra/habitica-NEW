@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { CoinService } from '../coin.service';
+import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { DailyTask } from './models';
 
 @Injectable({ providedIn: 'root' })
 export class DailyService {
 
   private _dailies$ = new BehaviorSubject<DailyTask[]>([]); 
+
+  constructor(private _dialog: MatDialog, private coinservice:CoinService) {}
 
   public getDailies(): DailyTask[] {
     return this._dailies$.getValue();
@@ -44,6 +49,7 @@ export class DailyService {
   public addDaily(name: string) {
     this.createTask({ task: name, type: 'DAILY', status: 'DUE' });
     this.setCount();
+    this.coinservice.setCount();
 
     //console.log(typeof name, 'print');
 
@@ -51,6 +57,26 @@ export class DailyService {
    // this._dailyService.createTask(name);
   }
 
+  public openDailyDialog(): void {
+    const dialogConfig: MatDialogConfig = {
+      width: '500px',
+      height: '500px',
+    };
+
+    dialogConfig.data = {
+      type: 'taskType',
+      title: 'Your dialog title',
+    };
+    const dialogRef = this._dialog.open(TaskDialogComponent, dialogConfig);
+
+    // result is name of new task
+    // result is interface {name: string; description: string; ...}
+    dialogRef.afterClosed().subscribe((result: string) => {
+      // here you will recieve eveverything which you put in dialog.close() param
+      this.addDaily(result);
+      console.log('The dialog was closed');
+    });
+  }
 
 
-}
+  }
