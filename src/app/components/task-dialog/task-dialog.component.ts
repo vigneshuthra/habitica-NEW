@@ -1,12 +1,12 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CoinService } from '../coin.service';
-import { DailyService } from '../daily/daily.service';
+import { CoinService } from '../../coin.service';
+import { DailyService } from '../../services/daily.service';
 import { DailyTask } from '../daily/models';
 import { HabitTask } from '../habits/habitmodels';
 import { ItemType } from '../item-list/item.data';
-import { TodoService } from '../todo-list/todo-list.service';
+import { TodoService } from '../../services/todo-list.service';
 import { TodoTask } from '../todo-list/todomodels';
 
 type TaskType = DailyTask | TodoTask | HabitTask;

@@ -2,34 +2,34 @@ import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CoinService } from '../coin.service';
-import { DailyTask } from '../daily/models';
-import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
-import { HabitTask } from './habitmodels';
+import { DailyTask } from '../components/daily/models';
+import { TaskDialogComponent } from '../components/task-dialog/task-dialog.component';
+import { TodoTask } from '../components/todo-list/todomodels';
 
 @Injectable({ providedIn: 'root' })
-export class HabitService {
+export class TodoService {
 
-  constructor(public _dialog: MatDialog, private coinservice:CoinService) {}
+  constructor(private _dialog: MatDialog, private coinservice:CoinService) {}
 
 
-  private _habits$ = new BehaviorSubject<HabitTask[]>([]);
+  private _todos$ = new BehaviorSubject<TodoTask[]>([]);
 
-  public getHabits(): HabitTask[] {
-    return this._habits$.getValue();
+  public getTodos(): TodoTask[] {
+    return this._todos$.getValue();
   }
 
-  public setHabits(data: HabitTask[]): void {
-    this._habits$.next(data);
+  public setTodos(data: TodoTask[]): void {
+    this._todos$.next(data);
   }
 
-  public getHabitsObservable(): Observable<HabitTask[]> {
-    return this._habits$.asObservable();
+  public getTodosObservable(): Observable<TodoTask[]> {
+    return this._todos$.asObservable();
   }
 
-  public createTask(newTask: HabitTask): void {
-    console.log('CreateTask', newTask);
+  public createTask(newTask: TodoTask): void {
+    console.log('createTask', newTask);
 
-    this.setHabits([newTask, ...this.getHabits()]);
+    this.setTodos([newTask, ...this.getTodos()]);
   }
 
   public count = 0;
@@ -45,14 +45,16 @@ export class HabitService {
   public decrementCount() {
     this.count--;
   }
-  public addHabit(name: string): void {
+
+  public addTodo(name: string): void{
     if(name)
-    this.createTask({ task: name, type: 'HABIT', status: 'STRONG' });
+    this.createTask({ task: name, type: 'TODO', status: 'ACTIVE' });
     this.setCount();
     this.coinservice.setCount();
+
   }
 
-  public openHabitDialog(): void {
+  public openTodoDialog(): void {
     const dialogConfig: MatDialogConfig = {
       width: '500px',
       height: '500px',
@@ -68,7 +70,7 @@ export class HabitService {
     // result is interface {name: string; description: string; ...}
     dialogRef.afterClosed().subscribe((result: string) => {
       // here you will recieve eveverything which you put in dialog.close() param
-      this.addHabit(result);
+      this.addTodo(result);
       console.log('The dialog was closed');
     });
   }

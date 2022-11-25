@@ -10,13 +10,13 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { combineLatest, map, Observable, Subject, takeUntil, tap } from 'rxjs';
-import { CoinService } from '../coin.service';
-import { DailyService } from '../daily/daily.service';
+import { CoinService } from '../../coin.service';
+import { DailyService } from '../../services/daily.service';
 import { DailyTask } from '../daily/models';
 import { HabitTask } from '../habits/habitmodels';
-import { HabitService } from '../habits/habits.service';
-import { HomeService } from '../home/home.service';
-import { TodoService } from '../todo-list/todo-list.service';
+import { HabitService } from '../../services/habits.service';
+import { HomeService } from '../../services/home.service';
+import { TodoService } from '../../services/todo-list.service';
 import { TodoTask } from '../todo-list/todomodels';
 import { ItemType } from './item.data';
 
@@ -100,15 +100,14 @@ export class ItemListComponent implements OnInit {
   }
 
   addCheckedTask($event: any, data: any): void {
-    
     this.arrayChecked.push($event);
     console.log('the task is added', this.arrayChecked);
   }
 
   displaylist(){
-    const selectList$ = this.arrayChecked.map((checked, index) => checked ? this.arrayChecked[index] : null)
+     const selectList$ = this.arrayChecked.map((checked, index) => checked ? this.arrayChecked[index] : null)
     .filter(value => value !== null);
-    console.log(selectList$);
+    console.log("DisplayChecked",selectList$);
     
   }
 

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CoinService } from '../coin.service';
-import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
-import { DailyTask } from './models';
+import { TaskDialogComponent } from '../components/task-dialog/task-dialog.component';
+import { DailyTask } from '../components/daily/models';
 
 @Injectable({ providedIn: 'root' })
 export class DailyService {

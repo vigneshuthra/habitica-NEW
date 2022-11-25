@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { HomeService } from './home.service';
+import { HomeService } from '../../services/home.service';
 
 interface DataStructure {
   id: string;

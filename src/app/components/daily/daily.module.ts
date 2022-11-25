@@ -9,7 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatInputModule } from '@angular/material/input';
-import { DailyService } from './daily.service';
+import { DailyService } from '../../services/daily.service';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ItemModule } from '../item/item.module';
 import { ItemListModule } from '../item-list/item-list.module';

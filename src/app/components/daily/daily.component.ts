@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { DailyService } from './daily.service';
+import { DailyService } from '../../services/daily.service';
 import { DailyTask } from './models';
-import { HomeService } from '../home/home.service';
+import { HomeService } from '../../services/home.service';
 
 @Component({
   selector: 'app-daily',

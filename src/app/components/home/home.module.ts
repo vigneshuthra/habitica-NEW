@@ -6,7 +6,7 @@ import { TodoListModule } from '../todo-list/todo-list.module';
 import { ProfileBannerModule } from '../profile-banner/profile-banner.module';
 import { HabitsModule } from '../habits/habits.module';
 import { SearchbarModule } from '../searchbar/searchbar.module';
-import { HomeService } from './home.service';
+import { HomeService } from '../../services/home.service';
 import { AddTaskBtnModule } from '../add-task-btn/add-task-btn.module';
 
 

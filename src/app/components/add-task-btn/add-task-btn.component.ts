@@ -1,10 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DailyService } from '../daily/daily.service';
-import { HabitService } from '../habits/habits.service';
+import { DailyService } from '../../services/daily.service';
+import { HabitService } from '../../services/habits.service';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 
-import { TodoService } from '../todo-list/todo-list.service';
+import { TodoService } from '../../services/todo-list.service';
 
 export interface DialogData {
   animal: string;

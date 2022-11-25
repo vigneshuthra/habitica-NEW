@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { DailyTask } from '../daily/models';
-import { HomeService } from '../home/home.service';
-import { TodoService } from './todo-list.service';
+import { HomeService } from '../../services/home.service';
+import { TodoService } from '../../services/todo-list.service';
 import { TodoTask } from './todomodels';
 
 @Component({

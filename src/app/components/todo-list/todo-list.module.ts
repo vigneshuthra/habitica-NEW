@@ -9,7 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatInputModule } from '@angular/material/input';
 import { TodoListComponent } from './todo-list.component';
-import { TodoService } from './todo-list.service';
+import { TodoService } from '../../services/todo-list.service';
 import {MatBadgeModule} from '@angular/material/badge';
 import { ItemListModule } from '../item-list/item-list.module';
 import {MatTabsModule} from '@angular/material/tabs';

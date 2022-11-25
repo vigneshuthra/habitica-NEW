@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CoinService } from '../coin.service';
+import { CoinService } from '../../coin.service';
 
 @Component({
   selector: 'app-profile-banner',

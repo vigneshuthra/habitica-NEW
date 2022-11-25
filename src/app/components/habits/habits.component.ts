@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { HomeService } from '../home/home.service';
+import { HomeService } from '../../services/home.service';
 import { HabitTask } from './habitmodels';
-import { HabitService } from './habits.service';
+import { HabitService } from '../../services/habits.service';
 
 @Component({
   selector: 'app-habits',
