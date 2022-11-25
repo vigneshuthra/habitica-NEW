@@ -24,12 +24,10 @@ export class DailyComponent implements OnInit {
   }
 
   public onAddDaily(name: string) {
-    this._dailyService.addDaily(name)
+    this._dailyService.addDaily(name);
     // console.log(typeof name, 'print');
     // this._dailyService.setCount();
     // this._dailyService.createTask(name);
   }
-  
-  
 
 }

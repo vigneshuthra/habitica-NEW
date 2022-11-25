@@ -12,11 +12,10 @@
       ></div>
     </div>
     <div class="tabContainer">
-      <mat-tab-group animationDuration="0ms">
-        <mat-tab label="All">  </mat-tab>
-        <mat-tab label="Due">  </mat-tab>
-        <mat-tab label="NotDue">  </mat-tab>
-      </mat-tab-group>
+      <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle value="bold">All</mat-button-toggle>
+        <mat-button-toggle value="italic">Due</mat-button-toggle>
+      </mat-button-toggle-group>
     </div>
   </div>
   <app-item-list
