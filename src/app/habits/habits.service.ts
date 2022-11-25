@@ -46,6 +46,7 @@ export class HabitService {
     this.count--;
   }
   public addHabit(name: string): void {
+    if(name)
     this.createTask({ task: name, type: 'HABIT', status: 'STRONG' });
     this.setCount();
     this.coinservice.setCount();

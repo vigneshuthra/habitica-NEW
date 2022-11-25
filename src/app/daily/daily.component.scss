@@ -35,8 +35,10 @@ align-items: center;
   margin: 2px!important;
   color: #472480 !important;
  }
- ::ng-deep .mat-button-toggle-button{
-  background-color: white !important;
+ ::ng-deep .mat-button-toggle-button, .mat-button-toggle-group{
+  background-color: #edecee !important;
   color: black !important;
+  outline: #edecee !important;
+  box-shadow: none;
  }
 

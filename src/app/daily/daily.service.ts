@@ -47,6 +47,7 @@ export class DailyService {
 
 
   public addDaily(name: string) {
+    if(name)
     this.createTask({ task: name, type: 'DAILY', status: 'DUE' });
     this.setCount();
     this.coinservice.setCount();
@@ -73,6 +74,7 @@ export class DailyService {
     // result is interface {name: string; description: string; ...}
     dialogRef.afterClosed().subscribe((result: string) => {
       // here you will recieve eveverything which you put in dialog.close() param
+      
       this.addDaily(result);
       console.log('The dialog was closed');
     });

@@ -7,6 +7,7 @@
       autocomplete="off"
       [formControl]="nameControl"
   /></mat-form-field>
+  <button (click)="displaylist()">Display</button>
 </div>
 
 <ng-container *ngIf="filteredData$ | async as data">
@@ -20,9 +21,11 @@
       *ngFor="let value of data; index as index"
       (inputDataChange)="removeTask(data, index)"
       (checkTask)="addCheckedTask($event, data)"
+      (removeCheck)="removeCheckedTask($event,data)"
 
       cdkDrag
     >
     </app-item>
   </div>
 </ng-container>
+

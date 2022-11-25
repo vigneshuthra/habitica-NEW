@@ -14,6 +14,8 @@ export class ItemComponent implements OnInit {
   @Output()
   checkTask = new EventEmitter<any>();
 
+  @Output() removeCheck = new EventEmitter<any>();
+
   constructor(private _coinservice: CoinService) {
     this.IsChecked = false;
   }
@@ -26,10 +28,13 @@ export class ItemComponent implements OnInit {
 
   onChange($event: any, name: any) {
     if ($event.checked) {
-      this.checkTask.emit(this.value.task);
+      this.checkTask.emit(this.value);
       this._coinservice.setCount();
     } else {
+      this.removeCheck.emit(this.value)
+
       this._coinservice.decrementCount();
+
       console.log('the task is removed');
     }
 

@@ -31,6 +31,7 @@ export class ItemListComponent implements OnInit {
   nameControl = new FormControl('');
 
   public filteredData$: Observable<TaskType[]> | null = null;
+
   public arrayChecked: TaskType[] = [];
 
   @Input() public type: ItemType | null = null;
@@ -99,7 +100,23 @@ export class ItemListComponent implements OnInit {
   }
 
   addCheckedTask($event: any, data: any): void {
+    
     this.arrayChecked.push($event);
     console.log('the task is added', this.arrayChecked);
+  }
+
+  displaylist(){
+    const selectList$ = this.arrayChecked.map((checked, index) => checked ? this.arrayChecked[index] : null)
+    .filter(value => value !== null);
+    console.log(selectList$);
+    
+  }
+
+  removeCheckedTask($event:any, data:any){
+    const index = this.arrayChecked.findIndex(list => list.task);
+    this.arrayChecked.splice(index, 1);
+    console.log(this.arrayChecked);
+    
+
   }
 }

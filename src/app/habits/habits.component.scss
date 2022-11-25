@@ -36,3 +36,10 @@ align-items: center;
   width: 5px;
   height: 15px;
 }
+
+::ng-deep .mat-button-toggle-button, .mat-button-toggle-group{
+  background-color: #edecee !important;
+  color: black !important;
+  outline: #edecee !important;
+  box-shadow: none;
+ }
