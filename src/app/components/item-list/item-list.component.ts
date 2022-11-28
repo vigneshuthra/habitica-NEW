@@ -115,7 +115,5 @@ export class ItemListComponent implements OnInit {
     const index = this.arrayChecked.findIndex(list => list.task);
     this.arrayChecked.splice(index, 1);
     console.log(this.arrayChecked);
-    
-
   }
 }

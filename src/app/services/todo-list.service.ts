@@ -47,11 +47,11 @@ export class TodoService {
   }
 
   public addTodo(name: string): void{
-    if(name)
+    if(name){
     this.createTask({ task: name, type: 'TODO', status: 'ACTIVE' });
     this.setCount();
     this.coinservice.setCount();
-
+    }
   }
 
   public openTodoDialog(): void {
