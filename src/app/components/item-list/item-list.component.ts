@@ -20,7 +20,7 @@ import { TodoService } from '../../services/todo-list.service';
 import { TodoTask } from '../todo-list/todomodels';
 import { ItemType } from './item.data';
 
-type TaskType = DailyTask | TodoTask | HabitTask ;
+type TaskType = DailyTask | TodoTask | HabitTask;
 
 @Component({
   selector: 'app-item-list',
@@ -54,6 +54,12 @@ export class ItemListComponent implements OnInit {
     private _habitservice: HabitService
   ) {}
   ngOnInit(): void {
+    this.initlist();
+
+    // console.log(this.initialData$);
+  }
+
+  initlist() {
     if (this.initialData$) {
       this.filteredData$ = combineLatest([
         this._homeService.searchData$,
@@ -64,14 +70,13 @@ export class ItemListComponent implements OnInit {
         )
       );
     }
-    // console.log(this.initialData$);
   }
 
   addTask() {
     if (this.onAddItem) {
       this.onAddItem(this.nameControl.value);
       this.nameControl.reset();
-     // this.coinservice.setCount();
+      // this.coinservice.setCount();
     }
   }
 
@@ -90,7 +95,7 @@ export class ItemListComponent implements OnInit {
 
   private _filterData(
     value: string | null,
-    data: Array<DailyTask | TodoTask| HabitTask>
+    data: Array<DailyTask | TodoTask | HabitTask>
   ): Array<DailyTask | TodoTask | HabitTask> {
     return value
       ? data.filter((dailyItem) =>
@@ -104,15 +109,21 @@ export class ItemListComponent implements OnInit {
     console.log('the task is added', this.arrayChecked);
   }
 
-  displaylist(){
-     const selectList$ = this.arrayChecked.map((checked, index) => checked ? this.arrayChecked[index] : null)
-    .filter(value => value !== null);
-    console.log("DisplayChecked",selectList$);
-    
+  displaylist() {
+    const selectList$ = this.arrayChecked
+      .map((checked, index) => (checked ? this.arrayChecked[index] : null))
+      .filter((value) => value !== null);
+    console.log('DisplayChecked', selectList$);
+
+    if (selectList$) {
+      this.filteredData$ = new Observable((subscriber) => {
+        subscriber.next(selectList$ as TaskType[]);
+      });
+    }
   }
 
-  removeCheckedTask($event:any, data:any){
-    const index = this.arrayChecked.findIndex(list => list.task);
+  removeCheckedTask($event: any, data: any) {
+    const index = this.arrayChecked.findIndex((list) => list.task);
     this.arrayChecked.splice(index, 1);
     console.log(this.arrayChecked);
   }

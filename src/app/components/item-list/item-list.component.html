@@ -7,8 +7,8 @@
       autocomplete="off"
       [formControl]="nameControl"
   /></mat-form-field>
-  <button (click)="displaylist()">Display Checked</button>
-</div>
+  <button (click)="displaylist()">Checked</button>
+  <button (click)="initlist()">All Task</button></div>
 
 <ng-container *ngIf="filteredData$ | async as data">
   <div
