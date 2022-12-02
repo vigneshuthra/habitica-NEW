@@ -9,7 +9,8 @@ import { CoinService } from '../../coin.service';
 export class ItemComponent implements OnInit {
   @Input()
   value: any;
-  IsChecked: boolean;
+  @Input()
+  IsChecked: boolean = false;
   @Output() inputDataChange: EventEmitter<any> = new EventEmitter();
   @Output()
   checkTask = new EventEmitter<any>();

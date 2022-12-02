@@ -105,7 +105,10 @@ export class ItemListComponent implements OnInit {
   }
 
   addCheckedTask($event: any, data: any): void {
-    this.arrayChecked.push($event);
+    // this.arrayChecked.push($event);
+    const task: DailyTask = $event;
+    task.status = task.status === 'DUE' ? 'NOT_DUE' : 'DUE';
+
     console.log('the task is added', this.arrayChecked);
   }
 
@@ -123,8 +126,23 @@ export class ItemListComponent implements OnInit {
   }
 
   removeCheckedTask($event: any, data: any) {
-    const index = this.arrayChecked.findIndex((list) => list.task);
-    this.arrayChecked.splice(index, 1);
+    const task: DailyTask = $event;
+    task.status = task.status === 'NOT_DUE' ? 'DUE' : 'NOT_DUE';
     console.log(this.arrayChecked);
+  }
+
+  isChecked(item: TaskType): boolean {
+    switch (this.type) {
+      case 'HABIT':
+        return false;
+      // item.status === ''
+      case 'DAILY':
+        return item.status === 'NOT_DUE';
+      case 'TODO':
+        return false;
+
+      default:
+        return false;
+    }
   }
 }

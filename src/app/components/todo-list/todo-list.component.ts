@@ -1,9 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
 import { DailyTask } from '../daily/models';
 import { HomeService } from '../../services/home.service';
 import { TodoService } from '../../services/todo-list.service';
 import { TodoTask } from './todomodels';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-list',
@@ -11,8 +12,11 @@ import { TodoTask } from './todomodels';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
-  public todoList$: Observable<TodoTask[]> | null = null;
+  public todoList$ = new BehaviorSubject<TodoTask[]>([]);
   public filteredTodoList$: Observable<TodoTask[]> | null = null;
+
+  public todotypeControl = new FormControl('ALL');
+  private _unsubcribe$ = new Subject<void>();
 
   countdata: number = 0;
 
@@ -22,7 +26,24 @@ export class TodoListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.todoList$ = this._todoService.getTodosObservable();
+   // this.todoList$ = this._todoService.getTodosObservable();
+   this._todoService
+   .getTodosObservable()
+   .pipe(takeUntil(this._unsubcribe$))
+   .subscribe((data) => {
+     this.todoList$.next(
+       this._filterTodos(data, this.todotypeControl.value)
+     );
+   });
+ // this.dailyList$ = this._dailyService.getDailiesObservable();
+
+ this.todotypeControl.valueChanges
+   .pipe(takeUntil(this._unsubcribe$))
+   .subscribe((type: string | null) => {
+     const allData = this._todoService.getTodos();
+     this.todoList$.next(this._filterTodos(allData, type));
+   });
+
   }
 
   public addAddTodo(name: string) {
@@ -33,4 +54,16 @@ export class TodoListComponent implements OnInit {
    // this._todoService.createTask(name);
   }
  
+  private _filterTodos(data: TodoTask[], type: string | null): TodoTask[] {
+    switch (type) {
+      case 'DONE':
+        return data.filter((item) => item.status === 'DONE');
+      case 'ACTIVE':
+        return data.filter((item) => item.status === 'ACTIVE');
+
+      default:
+        return data;
+    }
+  }
+
 }

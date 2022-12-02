@@ -4,4 +4,4 @@ export type TodoTask = {
         status: TodoStatusType;
 
       };
-      declare type TodoStatusType = 'ACTIVE' | 'DONE';
+export declare type TodoStatusType = 'ACTIVE' | 'DONE';

@@ -3,4 +3,4 @@ export type DailyTask = {
     task : string;
     status: DailyStatusType;
   };
-  declare type DailyStatusType = 'DUE' | 'NOT_DUE';
+  export declare type DailyStatusType = 'DUE' | 'NOT_DUE';

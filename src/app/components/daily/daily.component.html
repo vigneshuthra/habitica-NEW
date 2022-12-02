@@ -12,12 +12,17 @@
       ></div>
     </div>
     <div class="tabContainer">
-      <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
-        <mat-button-toggle >All</mat-button-toggle>
-        <mat-button-toggle >Due</mat-button-toggle>
-        <mat-button-toggle >Not Due</mat-button-toggle>
-
-      </mat-button-toggle-group>
+      <mat-button-toggle-group
+      [formControl]="dailyTypeControl"
+      appearance="legacy"
+      name="fontStyle"
+      value="ALL"
+      aria-label="Font Style"
+    >
+      <mat-button-toggle value="ALL">All</mat-button-toggle>
+      <mat-button-toggle value="DUE">Due</mat-button-toggle>
+      <mat-button-toggle value="NOT_DUE">Not Due</mat-button-toggle>
+    </mat-button-toggle-group>
     </div>
   </div>
   <app-item-list

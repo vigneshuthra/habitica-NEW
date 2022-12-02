@@ -7,8 +7,7 @@
       autocomplete="off"
       [formControl]="nameControl"
   /></mat-form-field>
-  <button (click)="displaylist()">Checked</button>
-  <button (click)="initlist()">All Task</button></div>
+ 
 
 <ng-container *ngIf="filteredData$ | async as data">
   <div
@@ -19,6 +18,7 @@
     <app-item
       [value]="value"
       *ngFor="let value of data; index as index"
+      [IsChecked]="isChecked(value)"
       (inputDataChange)="removeTask(data, index)"
       (checkTask)="addCheckedTask($event, data)"
       (removeCheck)="removeCheckedTask($event,data)"
